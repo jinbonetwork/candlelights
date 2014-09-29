@@ -1,0 +1,22 @@
+html,
+html body,
+#wpbody {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+html body #wpadminbar,
+html body #screen-meta,
+html body #screen-meta-links,
+html body #adminmenuback,
+html body #adminmenuwrap,
+html body #wpfooter {
+	display: none !important;
+}
+html body #wpcontent {
+	margin: 0 20px !important;
+}
+html body .message.error.ai1ec-message,
+html body a.add-new-h2,
+html body table .column-date {
+	display: none !important;
+}

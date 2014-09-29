@@ -1,0 +1,7 @@
+html body table th {
+	white-space: nowrap;
+}
+html body table .column-title {
+	width: auto;
+}
+

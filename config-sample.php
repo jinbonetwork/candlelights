@@ -1,4 +1,11 @@
 <?php
+define( 'DAUM_MAP_APIKEY', '' ); // YOUR DAUM MAP API KEY
+define( 'DAUM_LOCAL_APIKEY', '' ); // YOUR DAUM LOCAL API KEY
+define( 'MAIL_OUTBOUND_ID', '' ); // YOUR GOOGLE MAIL ADDRESS
+define( 'MAIL_OUTBOUND_PASSWORD', '' ); // YOUR GOOGLE MAIL PASSWORD
+define( 'SMS_OUTBOUND_ID', '' ); // YOUR NESOLUTION SMS SERVICE NUMERIC ID
+define( 'SMS_OUTBOUND_PASSWORD', '' ); // YOUR NESOLUTION SMS SERVICE PASSWORD
+
 if( !defined( 'ABSPATH' ) ) die( 'do not access this file directly' );
 
 setlocale( LC_ALL, WP_LANG );
@@ -69,25 +76,25 @@ define( 'FANCYBOX_HEIGHT', 1200 );
 define( 'MOBILE_WIDTH_POINT', 950 );
 define( 'MOBILE_HEIGHT_POINT', 50 );
 
-define( 'DAUM_MAP_APIKEY', '' ); // YOUR DAUM MAP API KEY
+//define( 'DAUM_MAP_APIKEY', '' ); // YOUR DAUM MAP API KEY
 define( 'DAUM_MAP_ENDPOINT', 'http://apis.daum.net/maps/maps3.js' );
-define( 'DAUM_LOCAL_APIKEY', '' ); // YOUR DAUM LOCAL API KEY
+//define( 'DAUM_LOCAL_APIKEY', '' ); // YOUR DAUM LOCAL API KEY
 define( 'DAUM_LOCAL_ENDPOINT', 'http://apis.daum.net/local/geo' );
 
 define( 'MAIL_OUTBOUND_SMTP_AUTH', true );
 define( 'MAIL_OUTBOUND_SMTP_SECURE', 'tls' );
 define( 'MAIL_OUTBOUND_HOST', 'smtp.gmail.com' );
 define( 'MAIL_OUTBOUND_PORT', '587' );
-define( 'MAIL_OUTBOUND_ID', '' ); // YOUR GOOGLE MAIL ADDRESS
-define( 'MAIL_OUTBOUND_PASSWORD', '' ); // YOUR GOOGLE MAIL PASSWORD
+//define( 'MAIL_OUTBOUND_ID', '' ); // YOUR GOOGLE MAIL ADDRESS
+//define( 'MAIL_OUTBOUND_PASSWORD', '' ); // YOUR GOOGLE MAIL PASSWORD
 
 define( 'SMS_OUTBOUND_HOST', 'http://www.nesolution.com/service/sms.aspx' ); // YOUR NESOLUTION SMS SERVICE ENDPOINT
-define( 'SMS_OUTBOUND_ID', '' ); // YOUR NESOLUTION SMS SERVICE NUMERIC ID
-define( 'SMS_OUTBOUND_PASSWORD', '' ); // YOUR NESOLUTION SMS SERVICE PASSWORD
+//define( 'SMS_OUTBOUND_ID', '' ); // YOUR NESOLUTION SMS SERVICE NUMERIC ID
+//define( 'SMS_OUTBOUND_PASSWORD', '' ); // YOUR NESOLUTION SMS SERVICE PASSWORD
 define( 'SMS_CAPACITY', 80 ); // cannot change
 
 define( 'POSTS_PER_PAGE', 100 ); // false: all, numeric: limit
-define( 'DEVEL_CAPABILITY', 'edit_theme_options' ); // for debu
+define( 'DEVEL_CAPABILITY', 'edit_theme_options' ); // for dev
 define( 'EDITOR_CAPABILITY', 'edit_others_posts' ); // for permission check
 define( 'CONTACT_EMAIL_PATTERN', '[^ @]+@[^ @]+' );
 define( 'CONTACT_PHONE_PATTERN', '[0-9 \-]+' );

@@ -13,7 +13,7 @@ candlelights
 | [fancybox][link-library-fancybox]                         | [Creative Commons Attribution-NonComercial 3.0][link-license-cc-by-nc-3-0] | contrib/fancybox/                  | 오버레이 팝업          |
 | [foundation-icons][link-library-foundation-icons]         | [MIT][link-license-mit]                                                    | contrib/foundation-icons/          | 추가 아이콘            |
 | [moment][link-library-moment]                             | [MIT][link-license-mit]                                                    | contrib/moment/                    | clndr 요구사항         |
-| [underscore][link-library-underscore]                     |                                                                            | contrib/underscore/                | clndr 요구사항         |
+| [underscore][link-library-underscore]                     | [MIT][link-license-mit]                                                    | contrib/underscore/                | clndr 요구사항         |
 | [clndr][link-library-clndr]                               | [MIT][link-license-mit]                                                    | contrib/clndr/                     | 일정표                 |
 | [Daum Map API][link-api-daum-map]                         | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/maps/maps3.js | 동적/정적 지도         |
 | [Daum Local API][link-api-daum-local]                     | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/local/geo     | 주소 검색              |

@@ -39,12 +39,13 @@ define( 'TODAY_MONTH', date('n') );
 define( 'TODAY_DAY', date('j') );
 define( 'TODAY_WEEKDAY', date('D') );
 
-define( 'TEMPLATEDIR', get_stylesheet_directory_uri() );
+define( 'SITE_URL', get_option('home') );
 define( 'BASEURL', SITE_URL.'/' );
+
+define( 'TEMPLATEDIR', get_stylesheet_directory_uri() );
 define( 'LISTURL', TEMPLATEDIR.'/ajax-list.php' );
 define( 'DETAILURL', TEMPLATEDIR.'/ajax-detail.php' );
 
-define( 'SITE_URL', get_option('home') );
 define( 'SITE_TITLE', get_option('blogname') );
 define( 'SITE_DESCRIPTION', get_option('blogdescription') );
 define( 'SITE_IMAGE', TEMPLATEDIR.'/images/title.svg' );

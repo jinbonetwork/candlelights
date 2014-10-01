@@ -5,10 +5,14 @@ candlelights
 
 [link-platform-wordpress]: http://wordpress.org
 
-특징
+개요
 ----
 
-
+* 지도를 탐색하면 자동으로 해당 지역의 일정을 검색해서 목록을 갱신합니다.
+* 동 이름을 검색해서 원하는 위치의 지도를 표시할 수 있습니다. 
+* 목록이나 마커를 클릭하면 오버레이 팝업으로 자세한 내용을 읽을 수 있습니다.
+* 팝업에는 간단한 주변 지도와 이번 달 일정이 표시됩니다.
+* 일정 정보에 연락처가 있으면 메일이나 문자로 문의사항을 발송할 수 있습니다.
 
 설치 및 설정
 ------------
@@ -20,7 +24,6 @@ candlelights
 5. 테마를 활성화합니다.
 6. 일정 정보를 입력할 때 위치 정보를 함께 입력합니다.
 7. 현재 날짜에 해당하는 일정 정보가 지도에 표시됩니다.
-
 
 요구사항
 --------
@@ -84,9 +87,16 @@ candlelights
 알려진 문제점
 -------------
 
-* 일정 등록화면에서 `/data02/candlelights/devel/wordpress/wp-content/plugins/all-in-one-event-calendar/cache/` 디렉토리에 쓰기 권한이 없다는 메시지가 뜹니다. 해당 플러그인의 문제로 동작에는 지장이 없습니다.
+* 일정 등록화면에서 `/wordpress/wp-content/plugins/all-in-one-event-calendar/cache/` 디렉토리에 쓰기 권한이 없다는 메시지가 뜹니다. 해당 플러그인의 문제로 동작에는 지장이 없습니다.
 
 버전 히스토리
 -------------
 
 * v0.9 -- 처음 업로드, 대부분의 기능 구현.
+
+라이선스
+--------
+
+이 프로젝트는 [Mozilla Public License 2.0][link-license-mpl-2-0]를 따릅니다.
+
+[link-license-mpl-2-0]: https://www.mozilla.org/MPL/2.0/

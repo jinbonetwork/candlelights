@@ -1,9 +1,25 @@
 candlelights
 ============
 
-다음 지도 API를 이용해서 지역 행사정보를 표시하는 워드프레스 테마입니다. 세월호 침몰 사고를 주제로 열리는 촛불집회 정보를 알리기 위해 제작되었고 이후로도 지역 활동을 공유하는데 활용할 계획입니다.
+다음 지도 API를 이용해서 지역 행사정보를 표시하는 [워드프레스][link-platform-wordpress] 테마입니다. 세월호 침몰 사고를 주제로 열리는 촛불집회 정보를 알리기 위해 제작되었고 이후로도 지역 활동을 공유하는데 활용할 계획입니다.
 
-이 프로젝트는 다음과 같은 외부 API 및 라이브러리들을 활용하고 있습니다.
+[link-platform-wordpress]: http://wordpress.org
+
+요구사항
+--------
+
+이 프로젝트를 활용하려면 다음과 같은 라이브러리들이 필요합니다.
+
+| 패키지                                                    | 라이선스                                                                   | 저장 위치                          | 용도                   |
+|-----------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------|------------------------|
+| [All-In-One Event Calendar][link-library-ai1ec]           | Copyright (c) Timely Network Inc. All rights reserved.                     | 워드프레스 플러그인                | 일정 관리              |
+
+[link-library-ai1ec]: http://time.ly/
+
+포함한 패키지 목록
+------------------
+
+이 프로젝트는 다음과 같은 라이브러리들을 포함하고 있습니다.
 
 | 패키지                                                    | 라이선스                                                                   | 저장 위치                          | 용도                   |
 |-----------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------|------------------------|
@@ -28,13 +44,24 @@ candlelights
 [link-library-moment]: http://momentjs.com
 [link-library-underscore]: http://underscorejs.org
 [link-library-clndr]: http://kylestetz.github.io/CLNDR/
-[link-api-daum-map]: http://apis.map.daum.net/web/
-[link-api-daum-local]: http://dna.daum.net/apis/local
 [link-library-phpmailer]: https://github.com/PHPMailer/PHPMailer/
 [link-library-snoopy]: http://snoopy.sourceforge.net/
+
+[link-api-daum-map]: http://apis.map.daum.net/web/
+[link-api-daum-local]: http://dna.daum.net/apis/local
 
 [link-license-mit]: http://en.wikipedia.org/wiki/MIT_License
 [link-license-apache]: http://www.apache.org/licenses/
 [link-license-cc-by-nc-3-0]: http://creativecommons.org/licenses/by-nc/3.0/
 [link-license-glgpl-2-1]: http://www.gnu.org/licenses/lgpl-2.1.html
 [link-license-gpl]: http://www.gnu.org/copyleft/gpl.html
+
+알려진 문제점
+-------------
+
+* 일정 등록화면에서 `/data02/candlelights/devel/wordpress/wp-content/plugins/all-in-one-event-calendar/cache/` 디렉토리에 쓰기 권한이 없다는 메시지가 뜹니다. 해당 플러그인의 문제로 동작에는 지장이 없습니다.
+
+버전 히스토리
+-------------
+
+* v0.9 -- 처음 업로드, 대부분의 기능 구현.

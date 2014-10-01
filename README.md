@@ -30,5 +30,5 @@ candlelights
 [link-library-clndr]: http://kylestetz.github.io/CLNDR/
 [link-api-daum-map]: http://apis.map.daum.net/web/
 [link-api-daum-local]: http://dna.daum.net/apis/local
-[link-library-phpmailer]: 
+[link-library-phpmailer]: https://github.com/PHPMailer/PHPMailer/
 [link-library-snoopy]: http://snoopy.sourceforge.net/

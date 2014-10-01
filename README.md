@@ -5,6 +5,23 @@ candlelights
 
 [link-platform-wordpress]: http://wordpress.org
 
+특징
+----
+
+
+
+설치 및 설정
+------------
+
+1. 워드프레스를 설치합니다.
+2. 요구사항을 갖춥니다.
+3. 테마 폴더에 본 프로젝트 파일을 업로드합니다.
+4. `config.php` 파일을 열고 필요한 API 키 및 계정 정보를 입력합니다.
+5. 테마를 활성화합니다.
+6. 일정 정보를 입력할 때 위치 정보를 함께 입력합니다.
+7. 현재 날짜에 해당하는 일정 정보가 지도에 표시됩니다.
+
+
 요구사항
 --------
 
@@ -14,7 +31,20 @@ candlelights
 |-----------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------|------------------------|
 | [All-In-One Event Calendar][link-library-ai1ec]           | Copyright (c) Timely Network Inc. All rights reserved.                     | 워드프레스 플러그인                | 일정 관리              |
 
+이 프로젝트를 활용하려면 다음과 같은 API 및 계정 정보가 필요합니다.
+
+| 권한                                                      | 라이선스                                                                   | 경로                               | 용도                   |
+|-----------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------|------------------------|
+| [Daum Map API][link-api-daum-map]                         | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/maps/maps3.js | 지도 출력              |
+| [Daum Local API][link-api-daum-local]                     | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/local/geo     | 주소 검색              |
+| [Gmail Account][link-api-gmail]                           | Copyright (c) Google. All rights reserved.                                 | http://smtp.gmail.com              | 메일 발송              |
+| [Nesolution SMS Service Account][link-api-sms]            | Copyright (c) Nesolution. All rights reserved.                             | http://nesolution.com/service/sms.aspx | 문자 발송          |
+
 [link-library-ai1ec]: http://time.ly/
+[link-api-daum-map]: http://apis.map.daum.net/web/
+[link-api-daum-local]: http://dna.daum.net/apis/local
+[link-api-gmail]: http://gmail.com
+[link-api-sms]: http://nesolution.com
 
 포함한 패키지 목록
 ------------------
@@ -31,8 +61,6 @@ candlelights
 | [moment][link-library-moment]                             | [MIT][link-license-mit]                                                    | contrib/moment/                    | clndr 요구사항         |
 | [underscore][link-library-underscore]                     | [MIT][link-license-mit]                                                    | contrib/underscore/                | clndr 요구사항         |
 | [clndr][link-library-clndr]                               | [MIT][link-license-mit]                                                    | contrib/clndr/                     | 일정표                 |
-| [Daum Map API][link-api-daum-map]                         | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/maps/maps3.js | 동적/정적 지도         |
-| [Daum Local API][link-api-daum-local]                     | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/local/geo     | 주소 검색              |
 | [PHPMailer][link-library-phpmailer]                       | [GNU Lesser General Public License 2.1][link-license-glgpl-2-1]            | contrib/PHPMailer                  | 문의사항 메일 발송     |
 | [snoopy][link-library-snoopy]                             | [GNU Public License][link-license-gpl]                                     | contrib/snoopy                     | 문의사항 문자 발송     |
 
@@ -46,9 +74,6 @@ candlelights
 [link-library-clndr]: http://kylestetz.github.io/CLNDR/
 [link-library-phpmailer]: https://github.com/PHPMailer/PHPMailer/
 [link-library-snoopy]: http://snoopy.sourceforge.net/
-
-[link-api-daum-map]: http://apis.map.daum.net/web/
-[link-api-daum-local]: http://dna.daum.net/apis/local
 
 [link-license-mit]: http://en.wikipedia.org/wiki/MIT_License
 [link-license-apache]: http://www.apache.org/licenses/

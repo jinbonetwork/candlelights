@@ -38,13 +38,13 @@ candlelights
 | [Daum Map API][link-api-daum-map]                         | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/maps/maps3.js | 지도 출력              |
 | [Daum Local API][link-api-daum-local]                     | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/local/geo     | 주소 검색              |
 | [Gmail Account][link-api-gmail]                           | Copyright (c) Google. All rights reserved.                                 | http://smtp.gmail.com              | 메일 발송              |
-| [Nesolution SMS Service Account][link-api-sms]            | Copyright (c) Nesolution. All rights reserved.                             | http://nesolution.com/service/sms.aspx | 문자 발송          |
+| [DotnetPia SMS Service Account][link-api-sms]             | Copyright (c) DotnetPia. All rights reserved.                              | http://nesolution.com/service/sms.aspx | 문자 발송          |
 
 [link-library-ai1ec]: http://time.ly/
 [link-api-daum-map]: http://apis.map.daum.net/web/
 [link-api-daum-local]: http://dna.daum.net/apis/local
 [link-api-gmail]: http://gmail.com
-[link-api-sms]: http://nesolution.com
+[link-api-sms]: http://dotnetpia.co.kr
 
 포함한 패키지 목록
 ------------------

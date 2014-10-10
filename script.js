@@ -115,13 +115,13 @@ jQuery(document).ready(function(e){
 				left: ( _width / 2 ) + 'px'
 			});
 		} else {
-			jQuery('body').scrollTop(0);
 			jQuery('body').addClass('mobile');
 			jQuery('#feature,#map').css({
 				width: _width + 'px',
 				height: ( _height - $header.height() - __MOBILE_HEIGHT_POINT__ ) + 'px'
 			});
 			if(!$body.hasClass('mode-list')) {
+				jQuery(document).scrollTop(0);
 				jQuery('#body').css({
 					marginTop: ( _height - __MOBILE_HEIGHT_POINT__ ) + 'px',
 					marginLeft: '0px'

@@ -185,7 +185,7 @@ Known problems
 Version histroy
 -------------
 
-* v0.9 -- The first upload. The most of functions are realized
+* v0.9 -- The first upload. The most of functions are realized.
 
 Licence
 --------

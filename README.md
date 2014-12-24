@@ -17,7 +17,7 @@ candlelights
 1. 워드프레스를 설치합니다.
 2. 요구사항을 갖춥니다.
 3. 테마 폴더에 본 프로젝트 파일을 업로드합니다.
-4. `config.php` 파일을 열고 필요한 API 키 및 계정 정보를 입력합니다.
+4. `config.php` 파일을 열고 필요한 API 키 및 API에 대한 계정 정보를 입력합니다.
 5. 테마를 활성화합니다.
 6. 일정 정보를 입력할 때 위치 정보를 함께 입력합니다.
 7. 현재 날짜에 해당하는 일정 정보가 지도에 표시됩니다.
@@ -33,7 +33,7 @@ candlelights
 
 이 프로젝트를 활용하려면 다음과 같은 API 및 계정 정보가 필요합니다.
 
-| 권한                                                      | 라이선스                                                                   | 경로                               | 용도                   |
+| API                                                      | 라이선스                                                                   | 경로                               | 용도                   |
 |-----------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------|------------------------|
 | [Daum Map API][link-api-daum-map]                         | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/maps/maps3.js | 지도 출력              |
 | [Daum Local API][link-api-daum-local]                     | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/local/geo     | 주소 검색              |
@@ -96,4 +96,99 @@ candlelights
 
 이 프로젝트는 [Mozilla Public License 2.0][link-license-mpl-2-0]를 따릅니다.
 
+[link-license-mpl-2-0]: https://www.mozilla.org/MPL/2.0/
+
+
+candlelights
+============
+
+This is a [WordPress][link-platform-wordpress] theme that can offer regional information for events using Daum map API. Originally this theme was created for candlelight vigils for Sewol ferry tragedy, but it will be used for sharing the information for other events later. However, it is not a theme for a blog. However, it is not a theme for a blog.
+
+* Automatically present the regional information as dragging the map.
+* Move the region through searching the name of Dong (a unit of a unit of administrative district of S. Korea)
+* When selecting a position through clicking an item of the list or a marker, display the detail information (the area around the position in the form of a map, and the monthly schedule of the area of the position) with the pop-up window. You can send an e-mail or a text message to the address displayed in the schedule.
+
+[link-platform-wordpress]: http://wordpress.org
+
+Installation and setting
+------------
+
+1. Install WordPress.
+2. Satisfy the requirements below.
+3. Upload the files of this theme into the folder of `themes` in the WordPress.
+4. Write the related API keys and the account information related to the API's into `config.php`.
+5. Activate the theme.
+6. Input location information with schedule.
+
+Requirements
+--------
+
+The libraries below must be installed.
+
+| Package                                                    | Licence                                                                   | Location to save                          | Use                   |
+|-----------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------|------------------------|
+| [All-In-One Event Calendar][link-library-ai1ec]           | Copyright (c) Timely Network Inc. All rights reserved.                     | `plugins` in your WordPress               | Schedule management              |
+
+The API's below and the account information related to them are needed.
+
+| API                                                      | Licence                                                                   | URI                               | Use                   |
+|-----------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------|------------------------|
+| [Daum Map API][link-api-daum-map]                         | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/maps/maps3.js | Map              |
+| [Daum Local API][link-api-daum-local]                     | Copyright (c) Daum Communications. All rights reserved.                    | http://apis.daum.net/local/geo     | Search addresses             |
+| [Gmail Account][link-api-gmail]                           | Copyright (c) Google. All rights reserved.                                 | http://smtp.gmail.com              | Send e-mails              |
+| [DotnetPia SMS Service Account][link-api-sms]             | Copyright (c) DotnetPia. All rights reserved.                              | http://nesolution.com/service/sms.aspx | Send text messages        |
+
+[link-library-ai1ec]: http://time.ly/
+[link-api-daum-map]: http://apis.map.daum.net/web/
+[link-api-daum-local]: http://dna.daum.net/apis/local
+[link-api-gmail]: http://gmail.com
+[link-api-sms]: http://dotnetpia.co.kr
+
+Packages included in this theme
+------------------
+
+| Package                                                    | Licence                                                                  | Location to save                         | Use                   |
+|-----------------------------------------------------------|----------------------------------------------------------------------------|------------------------------------|------------------------|
+| [jquery][link-library-jquery]                             | [MIT][link-license-mit]                                                    | WordPress bundle                  | Extend the functions of Javascript |
+| [bootstrap][link-library-bootstrap]                       | [MIT][link-license-mit]                                                    | contrib/bootstrap/                 | Basic layout and icons   |
+| [bootstrap-datepicker][link-library-bootstrap-datepicker] | [Apache License Version 2.0][link-license-apache]                          | contrib/bootstrap-datepicker/      | Date selector            |
+| [fancybox][link-library-fancybox]                         | [Creative Commons Attribution-NonComercial 3.0][link-license-cc-by-nc-3-0] | contrib/fancybox/                  | Overlay pop-up         |
+| [foundation-icons][link-library-foundation-icons]         | [MIT][link-license-mit]                                                    | contrib/foundation-icons/          | Additional icons          |
+| [moment][link-library-moment]                             | [MIT][link-license-mit]                                                    | contrib/moment/                    | A requirement of CLNDR.js        |
+| [underscore][link-library-underscore]                     | [MIT][link-license-mit]                                                    | contrib/underscore/                | A requirement of CLNDR.js         |
+| [clndr][link-library-clndr]                               | [MIT][link-license-mit]                                                    | contrib/clndr/                     | Scheduler                 |
+| [PHPMailer][link-library-phpmailer]                       | [GNU Lesser General Public License 2.1][link-license-glgpl-2-1]            | contrib/PHPMailer                  | Send e-mails for inquiry    |
+| [snoopy][link-library-snoopy]                             | [GNU Public License][link-license-gpl]                                     | contrib/snoopy                     | Send text messages for inquiry     |
+
+[link-library-jquery]: http://jquery.com
+[link-library-bootstrap]: http://getbootstrap.com
+[link-library-bootstrap-datepicker]: http://bootstrap-datepicker.readthedocs.org/
+[link-library-fancybox]: http://fancyapps.com
+[link-library-foundation-icons]: http://zurb.com/playground/foundation-icon-fonts-3/
+[link-library-moment]: http://momentjs.com
+[link-library-underscore]: http://underscorejs.org
+[link-library-clndr]: http://kylestetz.github.io/CLNDR/
+[link-library-phpmailer]: https://github.com/PHPMailer/PHPMailer/
+[link-library-snoopy]: http://snoopy.sourceforge.net/
+
+[link-license-mit]: http://en.wikipedia.org/wiki/MIT_License
+[link-license-apache]: http://www.apache.org/licenses/
+[link-license-cc-by-nc-3-0]: http://creativecommons.org/licenses/by-nc/3.0/
+[link-license-glgpl-2-1]: http://www.gnu.org/licenses/lgpl-2.1.html
+[link-license-gpl]: http://www.gnu.org/copyleft/gpl.html
+
+Known problems
+-------------
+
+* An error message which informs that the directory of `/wp-content/plugins/all-in-one-event-calendar/cache/` has not 'write permission'. The trouble arises from a plug-in included in this theme. However, the function goes well. 
+
+Version histroy
+-------------
+
+* v0.9 -- The first upload. The most of functions are realized
+
+Licence
+--------
+
+This follows [Mozilla Public License 2.0][link-license-mpl-2-0].
 [link-license-mpl-2-0]: https://www.mozilla.org/MPL/2.0/

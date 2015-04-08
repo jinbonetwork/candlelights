@@ -168,6 +168,7 @@ function determine_icon($name){
 	$icon = (object)array(
 		'basename' => str_replace( '-', '_', $name ),
 	);
+	$icon->basename = $icon->basename?$icon->basename:ICON_SLUG_DEFAULT;
 	$icon->slug = $icon->basename;
 	$icon->normal = ICON_PREFIX.$icon->slug.ICON_SUFFIX_NORMAL.ICON_EXTENSION;
 	$icon->hover = ICON_PREFIX.$icon->slug.ICON_SUFFIX_HOVER.ICON_EXTENSION;

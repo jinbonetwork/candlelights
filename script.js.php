@@ -184,6 +184,11 @@ var iconOptions = {
 	},
 	extension: '__ICON_EXTENSION__',
 	entry: {
+		default:{
+			slug:'__ICON_SLUG_DEFAULT__',
+			width: 38,
+			height: 53
+		},
 <?php
 	foreach( get_terms( 'events_categories', array( 'hide_empty' => false ) ) as $category ){
 		$icon = determine_icon($category->slug);

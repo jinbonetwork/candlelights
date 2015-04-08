@@ -30,6 +30,17 @@ $share_text = $entry->post_title;
 	echo $entry->event_time ? '<div class="event-time">' . $entry->event_time . '</div>' . PHP_EOL : '';
 ?>
 		</div><!--/.event-meta-->
+<?php
+	echo "<div class='event-category'>".PHP_EOL;
+	if($entry->event_category->term_image){
+		echo "<div class='event-category-image' style='background-image:url(\"{$entry->event_category->term_image}\")'></div><!--/.event-category-image-->".PHP_EOL;
+	}
+	if($entry->event_category->term_color){
+		$entry->event_category->term_color_style = "color:{$entry->event_category->term_color}";
+	}
+	echo "<div class='event-category-label'><span style='{$entry->event_category->term_color_style}'>{$entry->event_category->name}</span></div><!--/.event-category-label-->".PHP_EOL;
+	echo "</div><!--/.event-category-->".PHP_EOL;
+?>
 		<div class="event-title-wrap">
 			<h3 class="event-title"><i></i><span><?php echo $entry->post_title; ?></span></h3>
 		</div>

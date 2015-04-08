@@ -261,7 +261,7 @@ ul.menu li a:hover {
 }
 ul.menu li.manual-link a {
 	font-weight: bold;
-	color: #77B6B3;
+	color: #A7DBD9;
 }
 
 /*
@@ -858,16 +858,11 @@ body.mobile #console+div {
 		border-right: 0;
 	}
 }
-.event .event-header .event-meta .event-date,
+.event-date,
 .event .event-header .event-meta .event-rule {
 	font-size: 13px;
 	color: #333333;
 	padding-bottom: 7px;
-}
-.event .event-header .event-meta .event-date {
-	padding-left: 3px;
-}
-.event .event-header .event-meta .event-rule {
 	display: inline-block;
 	width: auto;
 	min-height: 1.8em;
@@ -891,13 +886,33 @@ body.mobile #console+div {
 .event .event-header .event-meta .event-time .to {
 	display: block;
 }
+.event .event-category {
+	margin-left: 190px;
+}
+.event .event-category-image {
+	display: inline-block;
+	vertical-align: top;
+	width: 20px;
+	height: 20px;
+	background-color: transparent;
+	background-position: center center;
+	background-attachment: scroll;
+	background-repeat: repeat;
+	background-size: cover;
+}
+.event .event-category-label {
+	display: inline-block;
+	vertical-align: top;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+}
 .event .event-header .event-title-wrap {
 
 }
 .event .event-header .event-title {
 	min-height: 50px;
 	margin-left: 190px;
-	padding-left: 70px;
 	background-attachment: scroll;
 	background-repeat: no-repeat;
 	background-position: left center;
@@ -905,27 +920,16 @@ body.mobile #console+div {
 	white-space: nowrap;
 }
 @media all and ( max-width: __MOBILE_WIDTH_POINT__px ){
+	.event .event-header .event-category,
 	.event .event-header .event-title {
 		margin-left: 135px;
-		padding-left: 65px;
 	}
 }
 @media all and ( max-width: 480px ){
+	.event .event-header .event-category,
 	.event .event-header .event-title {
 		margin-left: 0;
 	}
-}
-.event.event-category-candle .event-header .event-title {
-	background-image: url(./images/icon-category-candle.png);
-	background-image: url(./images/icon-category-candle-50x50.png)\9;
-}
-.event.event-category-culture .event-header .event-title {
-	background-image: url(./images/icon-category-culture.png);
-	background-image: url(./images/icon-category-culture-50x50.png)\9;
-}
-.event.event-category-action .event-header .event-title {
-	background-image: url(./images/icon-category-action.png);
-	background-image: url(./images/icon-category-action-50x50.png)\9;
 }
 .event .event-header .event-title i {
 	display: inline-block;

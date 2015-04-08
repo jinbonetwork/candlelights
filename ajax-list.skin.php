@@ -15,6 +15,17 @@ if( !defined( 'ABSPATH' ) ) die( 'do not access this file directly' );
 	echo $entry->event_time ? '<div class="event-time">' . $entry->event_time . '</div>' . PHP_EOL : '';
 ?>
 		</div><!--/.event-meta-->
+<?php
+	echo "<div class='event-category'>".PHP_EOL;
+	if($entry->event_category->term_image){
+		echo "<div class='event-category-image' style='background-image:url(\"{$entry->event_category->term_image}\")'></div><!--/.event-category-image-->".PHP_EOL;
+	}
+	if($entry->event_category->term_color){
+		$entry->event_category->term_color_style = "color:{$entry->event_category->term_color}";
+	}
+	echo "<div class='event-category-label'><span style='{$entry->event_category->term_color_style}'>{$entry->event_category->name}</span></div><!--/.event-category-label-->".PHP_EOL;
+	echo "</div><!--/.event-category-->".PHP_EOL;
+?>
 		<div class="event-title-wrap">
 			<h3 class="event-title"><i></i><span><a href="<?php echo get_permalink( $entry->ID ); ?>"><?php echo ( current_user_can( EDITOR_CAPABILITY ) ? "({$entry->event_priority})" : '' ) . $entry->post_title; ?></a></span></h3>
 		</div>

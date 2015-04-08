@@ -155,12 +155,25 @@ function get_event_posts( $ids ){
 		return false;
 	}
 }
+function get_event_category($entry){
+	global $wpdb,$table_prefix;
+	$term_id = $entry->term_taxonomy_id;
+	$db = $table_prefix.'ai1ec_event_category_meta';
+	$general = get_term( $term_id, 'events_categories' );
+	$meta = $wpdb->get_row("SELECT * FROM {$db} WHERE term_id='{$term_id}'");
+	$category = (object)array_merge((array)$general,(array)$meta);
+	return $category;
+}
+function get_event_icon($entry){
+	$icon = str_replace( '-', '_', $entry->event_category->slug );
+	return $icon;
+}
 function filter_event( $entry ){
-	$entry->event_category = get_term( $entry->term_taxonomy_id, 'events_categories' );
+	$entry->event_category = get_event_category($entry);
+	$entry->icon = get_event_icon($entry);
 	$entry->category = $entry->event_category->term_id;
 	$entry->has_contact = $entry->contact_phone || $entry->contact_email ? true : false;
 	$entry->post_content_filtered = apply_filters( 'the_content', $entry->post_content );
-	$entry->icon = str_replace( '-', '_', $entry->event_category->slug );
 	$entry = filter_recurrence_rules( $entry );
 
 	$entry->event_classes = array(

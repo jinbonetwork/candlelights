@@ -26,8 +26,27 @@ add_action( 'init', 'candlelights_init' );
 
 function candlelights_after_setup_theme(){
 	load_theme_textdomain( 'candlelights', get_template_directory().'/languages' );
+	load_theme_textdomain( 'candlelightsRewording', get_template_directory().'/languages/rewording' );
 }
 add_action( 'after_setup_theme', 'candlelights_after_setup_theme' );
+
+function candlelights_l10n_rewording($translated,$text,$domain){
+	$message = $translated;
+	if($domain=='candlelights'){
+		$message = __($translated,'candlelightsRewording');
+	}
+	return $message;
+}
+add_filter('gettext','candlelights_l10n_rewording',99,3);
+
+function candlelights_l10n_rewording_with_context($translated,$text,$context,$domain){
+	$message = $translated;
+	if($domain=='candlelights'){
+		$message = _x($translated,$context,'candlelightsRewording');
+	}
+	return $message;
+}
+add_filter('gettext_with_context','candlelights_l10n_rewording_with_context',99,4);
 
 function candlelights_login_enqueue_scripts(){
 	wp_enqueue_style( 'candlelights-admin-style', get_stylesheet_directory_uri().'/style.login.css' );

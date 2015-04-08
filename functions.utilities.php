@@ -114,11 +114,15 @@ function filter_recurrence_rules( $event ){
 			}
 			$event->event_byday = implode( ',', $event->event_byday_array );
 		}
-		$event->event_rule = __( sprintf(
-			__( 'Every %s %s', 'candlelights' ),
-			( $event->event_rules[interval] && $event->event_rules[interval] > 1 ? $event->event_rules[interval] : '' ),
-			( $event->event_rules[freq] ? __( trim( $event->event_rules[freq] ), 'candlelights' ) : '' )
-		), 'candlelights' ) . ( $event->event_rules[byday] ? ' ' . __( $event->event_byday, 'candlelights' ) : '' );
+		$event->event_rule = __(
+				sprintf(
+					__( 'Every %s %s', 'candlelights' ),
+					( $event->event_rules[interval] && $event->event_rules[interval] > 1 ? $event->event_rules[interval] : '' ),
+					( $event->event_rules[freq] ? __( trim( $event->event_rules[freq] ), 'candlelights' ) : '' )
+				),
+				'candlelights'
+			);
+		$event->event_rule .= ( $event->event_rules[byday] ? ' ' . __( $event->event_byday, 'candlelights' ) : '' );
 		$event->event_rules = array_filter( $event->event_rules, 'trim' );
 	} else {
 		$current_year = date('Y', time());

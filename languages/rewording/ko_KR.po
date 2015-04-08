@@ -1,0 +1,43 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: candlelightsRewording\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: 진보네트워크센터 <jinbonetwork@gmail.com>\n"
+"Language-Team: jinbonet <jinbonetwork@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko_KR\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "매 년"
+msgstr "매년"
+
+msgid "매 월"
+msgstr "매월"
+
+msgid "매 주"
+msgstr "매주"
+
+msgid "매 일"
+msgstr "매일"
+
+msgid "매 2년"
+msgstr "격년"
+
+msgid "매 2월"
+msgstr "격월"
+
+msgid "매 2주"
+msgstr "격주"
+
+msgid "매 2일"
+msgstr "격일"
+
+msgid "월,화,수,목,금"
+msgstr "평일"
+
+msgid "토,일"
+msgstr "주말"

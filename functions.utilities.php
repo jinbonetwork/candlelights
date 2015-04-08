@@ -136,7 +136,7 @@ function filter_recurrence_rules( $event ){
 	if( $event->allday ) {
 		$event->event_time = __( 'All day', 'candlelights' );
 	} else {
-		$event->event_time = sprintf( __( '%s ~ %s', 'candlelights' ), $event->event_time_start, $event->event_time_end );
+		$event->event_time = sprintf( __( '<span class="from">%s</span> <span class="split">~</span> <span class="to">%s</span>', 'candlelights' ), $event->event_time_start, $event->event_time_end );
 	}
 	return $event;
 }

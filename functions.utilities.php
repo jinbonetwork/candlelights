@@ -164,14 +164,24 @@ function get_event_category($entry){
 	$category = (object)array_merge((array)$general,(array)$meta);
 	return $category;
 }
-function get_event_icon($entry){
-	$icon = str_replace( '-', '_', $entry->event_category->slug );
+function determine_icon($name){
+	$icon = (object)array(
+		'basename' => str_replace( '-', '_', $name ),
+	);
+	$icon->slug = $icon->basename;
+	$icon->normal = ICON_PREFIX.$icon->slug.ICON_SUFFIX_NORMAL.ICON_EXTENSION;
+	$icon->hover = ICON_PREFIX.$icon->slug.ICON_SUFFIX_HOVER.ICON_EXTENSION;
+	if(!file_exists(TEMPLATEPATH.'/images/'.$icon->normal)){
+		$icon->slug = ICON_SLUG_DEFAULT;
+		$icon->normal = ICON_PREFIX.ICON_SLUG_DEFAULT.ICON_SUFFIX_NORMAL.ICON_EXTENSION;
+		$icon->hover = ICON_PREFIX.ICON_SLUG_DEFAULT.ICON_SUFFIX_HOVER.ICON_EXTENSION;
+	}
 	return $icon;
 }
 function filter_event( $entry ){
 	$entry->event_category = get_event_category($entry);
-	$entry->icon = get_event_icon($entry);
 	$entry->category = $entry->event_category->term_id;
+	$entry->icon = determine_icon($entry->event_category->slug);
 	$entry->has_contact = $entry->contact_phone || $entry->contact_email ? true : false;
 	$entry->post_content_filtered = apply_filters( 'the_content', $entry->post_content );
 	$entry = filter_recurrence_rules( $entry );
@@ -180,7 +190,7 @@ function filter_event( $entry ){
 		'event',
 		'event-id-' . $entry->ID,
 		'event-category-' . $entry->event_category->term_id,
-		'event-category-' . $entry->icon,
+		'event-category-' . $entry->icon->slug,
 		'event-priority-' . abs( $entry->menu_order ),
 		'event-' . ( $entry->menu_order == 0 ? 'normal' : 'important' ),
 	);
@@ -254,7 +264,7 @@ function get_events_query( $options = array() ){
 			$query_conditions[] = '( e.latitude >= __SW_LAT__ AND e.latitude <= __NE_LAT__ AND e.longitude >= __SW_LNG__ AND e.longitude <= __NE_LNG__ )';
 		}
 		$query_conditions[] = '( e.end >= __DAY_START__ OR i.end >= __DAY_START__ )'; // events not ended
-		if( TODAY_ONLY || YMD < YMD_TODAY ) {
+		if( TODAY_ONLY || YMD < TODAY_YMD ) {
 			//$query_conditions[] = '( e.start <= __DAY_END__ OR i.start <= __DAY_END__ )'; // events must be available on given day
 			$query_conditions[] = '( i.start <= __DAY_END__ )'; // events must be available on given day
 		}

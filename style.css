@@ -332,11 +332,11 @@ ul.menu li.manual-link a {
 #feature .map-control {
 	position: absolute;
 	z-index: 2;
-	top: 15px;
+	top: 10px;
 	border: 2px solid #63CFCA;
 	background-color: #FFFFFF;
-	border-radius: 30px;
-	box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	border-radius: 0 15px 15px;
+	box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
 	overflow: hidden;
 }
 /*
@@ -407,7 +407,7 @@ ul.menu li.manual-link a {
 #feature #search-box {
 	right: 15px;
 	width: 250px;
-	border-radius: 15px;
+	border-radius: 0 15px;
 }
 #search-box * {
 	box-sizing: border-box;
@@ -492,7 +492,7 @@ ul.menu li.manual-link a {
 	line-height: inherit;
 	font-weight: normal;
 	font-size: 12px;
-	color: #1A949C;
+	color: #A8A8A8;
 }
 
 /*
@@ -535,8 +535,7 @@ body.mobile #console {
 }
 #category-selector,
 #ymd-picker {
-	border-radius: 15px;
-	border: 1px solid #999999;
+	border: 1px solid #DDDDDD;
 	background-color: #FFFFFF;
 	overflow: hidden;
 }
@@ -794,8 +793,7 @@ body.mobile #console+div {
 	clear: both;
 }
 .event .event-feature .event-category {
-	margin-right: 8em;
-	float: left;
+	display: none;
 }
 .event .event-feature .event-category i {
 	margin-right: 0.25em;
@@ -817,13 +815,6 @@ body.mobile #console+div {
 }
 .event .event-header .event-info:before {
 	display: inline-block;
-	width: 24px;
-	height: 24px;
-	line-height: 24px;
-	text-align: center;
-	border-radius: 24px;
-	border: 1px solid #999999;
-	color: #999999;
 	font-family: 'Glyphicons Halflings';
 	content: '\E062';
 	font-size: 14px;
@@ -832,7 +823,7 @@ body.mobile #console+div {
 }
 .event .event-header .event-info .event-venue {
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 15px;
 }
 .event .event-header .event-info .event-location {
 	margin-left: 0.5em;
@@ -870,9 +861,9 @@ body.mobile #console+div {
 	text-align: center;
 	margin: 0;
 	padding: 0 1em;
-	border: 0.1em solid #63CFCA;
-	border-radius: 100px;
-	color: #63CFCA;
+	background-color: #63CFCA;
+	color: #FFFFFF;
+	border-radius: 0 10px 10px 0;
 	font-size: 12px;
 }
 .event .event-header .event-meta .event-time {
@@ -988,14 +979,14 @@ body.mobile #console+div {
 	max-width: 100%;
 }
 .event .event-body .event-map-box,
-.event .event-body .event-today,
+.event .event-body .event-annotation,
 .event .event-body .event-calendar {
 	margin: 35px auto 0 auto;
 	width: 100%;
 	height: 380px;
 }
 .event .event-body .event-map-box,
-.event .event-body .event-today,
+.event .event-body .event-annotation,
 .event .event-body .event-calendar,
 .event .event-body .event-contact {
 	box-shadow: 0 0 3px rgba(0,0,0,0.15);
@@ -1012,14 +1003,14 @@ body.mobile #console+div {
 	float: right;
 }
 */
-.event .event-body .event-today {
+.event .event-body .event-annotation {
 	width: 43%;
 }
 .event .event-body .event-calendar {
 	width: 55%;
 	margin-bottom: 35px;
 }
-.event .event-body .event-today {
+.event .event-body .event-annotation {
 	float: left;
 }
 .event .event-body .event-calendar {
@@ -1030,7 +1021,7 @@ body.mobile #console+div {
 }
 @media all and ( max-width: __FANCYBOX_WIDTH__px ) {
 	.event .event-body .event-map-box,
-	.event .event-body .event-today,
+	.event .event-body .event-annotation,
 	.event .event-body .event-calendar,
 	.event .event-body .event-contact {
 		width: 100% !important;
@@ -1051,10 +1042,10 @@ body.mobile #console+div {
 	margin: 0 0 0 -500px;
 	padding: 0;
 }
-.event .event-body .event-today {
+.event .event-body .event-annotation {
 	background-color: #E4F4F4;
 }
-.event .event-body .event-today .today-note {
+.event .event-body .event-annotation .title {
 	position: relative;
 	height: 200px;
 	padding: 20px;
@@ -1063,11 +1054,11 @@ body.mobile #console+div {
 	color: #FFFFFF;
 }
 @media all and ( max-width: __FANCYBOX_WIDTH__px ) {
-	.event .event-body .event-today .today-note {
+	.event .event-body .event-annotation .title {
 		padding-right: 87px;
 	}
 }
-.event .event-body .event-today .today-note:after {
+.event .event-body .event-annotation .title:after {
 	content: '';
 	display: block;
 	position: absolute;
@@ -1075,59 +1066,51 @@ body.mobile #console+div {
 	right: 15px;
 	width: 67px;
 	height: 67px;
-	background: transparent url(./images/icon-today-note.png) scroll no-repeat center center;
-	background: transparent url(./images/icon-today-note-67x67.png) scroll no-repeat center center\9;
+	background: transparent url(./images/icon-annotation.png) scroll no-repeat center center;
+	background: transparent url(./images/icon-annotation-67x67.png) scroll no-repeat center center\9;
 	background-size: 67px 67px;
 }
-.event .event-body .event-today .today-note span {
+.event .event-body .event-annotation .title span {
 	white-space: nowrap;
 }
-.event .event-body .event-today .today-note .today-is {
+.event .event-body .event-annotation .title .today-is {
 	display: block;
 	font-size: 20px;
 }
-.event .event-body .event-today .today-note .year {
+.event .event-body .event-annotation .title .year {
 	display: block;
 	font-size: 25px;
 }
-.event .event-body .event-today .today-note .month {
+.event .event-body .event-annotation .title .month {
 	font-size: 30px;
 }
-.event .event-body .event-today .today-note .day {
+.event .event-body .event-annotation .title .day {
 	font-size: 30px;
 }
-.event .event-body .event-today .today-note .day:after {
+.event .event-body .event-annotation .title .day:after {
 	content: '';
 	display: block;
 }
-.event .event-body .event-today .today-note .weekday {
+.event .event-body .event-annotation .title .weekday {
 	font-size: 25px;
 }
-.event .event-body .event-today .day-counter {
+.event .event-body .event-annotation .description {
 	padding: 20px;
 	color: #2EABB3;
 	font-size: 12px;
 }
-.event .event-body .event-today .day-counter .thankyou,
-.event .event-body .event-today .day-counter .counter {
-	display: block;
-}
 @media all and ( max-width: __FANCYBOX_WIDTH__px ){
-	.event .event-body .event-today,
-	.event .event-body .event-today .today-note {
+	.event .event-body .event-annotation,
+	.event .event-body .event-annotation .title {
 		height: auto;
 	}
-	.event .event-body .event-today .today-note .today-is,
-	.event .event-body .event-today .today-note .year {
+	.event .event-body .event-annotation .title .today-is,
+	.event .event-body .event-annotation .title .year {
 		display: inline !important;
 		font-size: 14px !important;
 	}
-	.event .event-body .event-today .today-note .day:after {
+	.event .event-body .event-annotation .title .day:after {
 		display: none !important;
-	}
-	.event .event-body .event-today .day-counter .thankyou,
-	.event .event-body .event-today .day-counter .counter {
-		display: inline !important;
 	}
 }
 .event .devel.event-object {
@@ -1152,7 +1135,7 @@ body.mobile #console+div {
 }
 .event-list.hover {
 	background-color: #E4F4F4;
-	border-bottom-color: #2EABB3;
+	border-bottom-color: #7FD1D3;
 }
 .event-list.hover .event-header .event-meta .event-time {
 	color: #90C4C0;
@@ -1169,10 +1152,9 @@ body.mobile #console+div {
 	height: 50px;
 	text-align: center;
 	line-height: 50px;
-	background-color: #FFFFFF;
+	background-color: #FFE3D7;
 	margin: 0;
 	border-bottom: 1px solid #DDDDDD;
-	color: #999999;
 	text-decoration: none;
 }
 .event-more a:hover {

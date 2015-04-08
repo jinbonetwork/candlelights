@@ -248,8 +248,8 @@ jQuery(document).ready(function(e){
 					$this.detail = $this.attr('data-detail');
 					$this.category = $this.attr('data-category');
 					$this.icon = {
-						normal: icon[$this.attr('data-icon') + icons.suffix.normal],
-						hover: icon[$this.attr('data-icon') + icons.suffix.hover],
+						normal: icon[$this.attr('data-icon') + iconOptions.suffix.normal],
+						hover: icon[$this.attr('data-icon') + iconOptions.suffix.hover],
 					};
 
 					marker[$this.eid] = new daum.maps.Marker({ position: new daum.maps.LatLng( $this.lat, $this.lng ), image: $this.icon.normal });
@@ -421,9 +421,9 @@ jQuery(document).ready(function(e){
 		query.lat = ( query.sw_lat + query.ne_lat ) / 2;
 		query.lng = ( query.sw_lng + query.ne_lng ) / 2;
 	}
-	for( i in icons.entry ){
-		icon[i+icons.suffix.normal] = new daum.maps.MarkerImage( '__TEMPLATEDIR__/images/' + icons.prefix + icons.entry[i].slug + icons.suffix.normal + icons.extension, new daum.maps.Size( icons.entry[i].width, icons.entry[i].height ) );
-		icon[i+icons.suffix.hover] = new daum.maps.MarkerImage( '__TEMPLATEDIR__/images/' + icons.prefix + icons.entry[i].slug + icons.suffix.hover + icons.extension, new daum.maps.Size( icons.entry[i].width, icons.entry[i].height ) );
+	for( iconBasename in iconOptions.entry ){
+		icon[iconBasename+iconOptions.suffix.normal] = new daum.maps.MarkerImage( '__TEMPLATEDIR__/images/' + iconOptions.prefix + iconOptions.entry[iconBasename].slug + iconOptions.suffix.normal + iconOptions.extension, new daum.maps.Size( iconOptions.entry[iconBasename].width, iconOptions.entry[iconBasename].height ) );
+		icon[iconBasename+iconOptions.suffix.hover] = new daum.maps.MarkerImage( '__TEMPLATEDIR__/images/' + iconOptions.prefix + iconOptions.entry[iconBasename].slug + iconOptions.suffix.hover + iconOptions.extension, new daum.maps.Size( iconOptions.entry[iconBasename].width, iconOptions.entry[iconBasename].height ) );
 	}
 	var map = {};
 	jQuery('#map').each(function(e){

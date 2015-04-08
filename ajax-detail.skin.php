@@ -70,10 +70,23 @@ if( $entry->show_map ) {
 EOT;
 }
 ?>
-		<div id="today" class="event-today block block-wide">
-			<div class="today-note"><?php printf(__('<span class="today-is">Today is</span> <span class="year">%s</span> <span class="month">%s</span> <span class="day">%s</span> <span class="weekday">%s</span>.','candlelights'), TODAY_YEAR . __('Year','candlelights'), TODAY_MONTH . __('Month','candlelights'), TODAY_DAY . __('Day','candlelights'), __(TODAY_WEEKDAY,'candlelights') . __('Weekday','candlelights') ); ?></div>
-			<div class="day-counter"><?php printf(__('<span class="thankyou">Thank you for remembering.</span> <span class="counter">%s days have passed from 4/16.</span>','candlelights'), DAY_COUNTER );?></div>
-		</div>
+		<div class="event-annotation block block-wide">
+			<h2 class="title"><?php
+				printf(
+					__('<span class="today-is">Today is</span> <span class="year">%s</span> <span class="month">%s</span> <span class="day">%s</span>; <span class="counter">%s</span> days have passed since the Sewol Ferry Tragedy.','candlelights'),
+					TODAY_YEAR,
+					TODAY_MONTH,
+					TODAY_DAY,
+					DAY_COUNTER
+			   	);
+			?></h2><!--/.title-->
+			<div class="description"><?php
+				printf(
+					__('To join the petition, please visit %s.','candlelights'),
+					"<a class='go-petition' href='http://petition.sewolho416.org'>petition.sewolho416.org</a>"
+				);
+			?></div><!--/.description-->
+		</div><!--/#annotation-->
 		<div id="calendar" class="event-calendar block block-wide">
 			<script id="mini-clndr-template" type="text/template">
 				<div class="controls">

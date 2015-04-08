@@ -3,7 +3,7 @@ if( !defined( 'ABSPATH' ) ) die( 'do not access this file directly' );
 
 ?>
 
-<div id="event-<?php echo $entry->ID; ?>" class="event-list page-<?php echo $page; ?> <?php echo $entry->event_class; ?>" data-category="<?php echo $entry->category; ?>" data-icon="<?php echo $entry->icon; ?>" data-latitude="<?php echo $entry->latitude; ?>" data-longitude="<?php echo $entry->longitude; ?>" data-permalink="<?php echo get_permalink( $entry->post_id ); ?>" data-detail="<?php echo DETAILURL . '?id=' . $entry->post_id; ?>">
+<div id="event-<?php echo $entry->ID; ?>" class="event-list page-<?php echo $page; ?> <?php echo $entry->event_class; ?>" data-category="<?php echo $entry->category; ?>" data-icon="<?php echo $entry->icon->basename; ?>" data-latitude="<?php echo $entry->latitude; ?>" data-longitude="<?php echo $entry->longitude; ?>" data-permalink="<?php echo get_permalink( $entry->post_id ); ?>" data-detail="<?php echo DETAILURL . '?id=' . $entry->post_id; ?>">
 	<div class="event-header">
 		<div class="event-info">
 			<span class="event-venue"><?php echo $entry->venue; ?></span><span class="event-location"><?php echo $entry->address; ?></span>

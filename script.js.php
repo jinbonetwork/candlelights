@@ -176,19 +176,21 @@ moment.lang('ko_KR',{
 	}
 });
 moment.lang('__LANGUAGE__');
-var icons = {
+var iconOptions = {
 	prefix: '__ICON_PREFIX__',
-	suffix: { normal: '__ICON_SUFFIX_NORMAL__', hover: '__ICON_SUFFIX_HOVER__' },
+	suffix: {
+		normal: '__ICON_SUFFIX_NORMAL__',
+		hover: '__ICON_SUFFIX_HOVER__'
+	},
 	extension: '__ICON_EXTENSION__',
 	entry: {
 <?php
 	foreach( get_terms( 'events_categories', array( 'hide_empty' => false ) ) as $category ){
-		$slug = str_replace( '-', '_', $category->slug );
-		$icon_slug = ( file_exists( TEMPLATEPATH . "/images/{$slug}" . ICON_SUFFIX_NORMAL . ICON_EXTENSION ) && file_exists( TEMPLATEPATH . "/images/{$slug}" . ICON_SUFFIX_HOVER . ICON_EXTENSION ) ) ? $slug : ICON_SLUG_DEFAULT;
+		$icon = determine_icon($category->slug);
 		ob_start();
 		echo <<<EOT
-		$slug:{
-			slug: '$icon_slug',
+		{$icon->basename}:{
+			slug: '{$icon->slug}',
 			width: 38,
 			height: 53
 		}

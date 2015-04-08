@@ -49,12 +49,13 @@ $today = mktime(0, 0, 0, date("m")  , date("d"), date("Y"));
 $theday = mktime(0, 0, 0, 4, 16, 2014); 
 $counter = ($today - $theday) / (60 * 60 * 24);
 
-define( 'YMD_TODAY', date('Y-m-d') );
+define( 'TODAY_YMD', date('Y-m-d') );
 define( 'DAY_COUNTER', $counter);
 define( 'TODAY_YEAR', date('Y') );
 define( 'TODAY_MONTH', date('n') );
 define( 'TODAY_DAY', date('j') );
 define( 'TODAY_WEEKDAY', date('D') );
+define( 'TODAY_FORMAT', date(get_option('date_format')) );
 
 define( 'SITE_URL', get_option('home') );
 define( 'BASEURL', SITE_URL.'/' );

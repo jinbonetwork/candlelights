@@ -165,9 +165,10 @@ function get_event_category($entry){
 	return $category;
 }
 function determine_icon($name){
-	$icon = (object)array(
-		'basename' => str_replace( '-', '_', $name ),
+	$basenamePattern = array(
+		'-' => '_',
 	);
+	$icon = (object)array('basename' => str_replace(array_keys($basenamePattern),array_values($basenamePattern),$name),);
 	$icon->basename = $icon->basename?$icon->basename:ICON_SLUG_DEFAULT;
 	$icon->slug = $icon->basename;
 	$icon->normal = ICON_PREFIX.$icon->slug.ICON_SUFFIX_NORMAL.ICON_EXTENSION;

@@ -911,18 +911,18 @@ body.mobile #console+div {
 	white-space: nowrap;
 }
 @media all and ( max-width: __MOBILE_WIDTH_POINT__px ){
-	.event .event-header .event-meta .event-time {
-		display: inline;
-	}
-	.event .event-header .event-meta .event-time .to {
-		display: initial;
-	}
 	.event .event-header .event-category,
 	.event .event-header .event-title {
 		margin-left: 135px;
 	}
 }
 @media all and ( max-width: 480px ){
+	.event .event-header .event-meta .event-time {
+		display: inline;
+	}
+	.event .event-header .event-meta .event-time .to {
+		display: initial;
+	}
 	.event .event-header .event-category,
 	.event .event-header .event-title {
 		margin-left: 0;

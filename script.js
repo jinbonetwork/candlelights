@@ -519,7 +519,7 @@ jQuery(document).ready(function(e){
 		_update();
 	});
 	ui.today_only.on('click',function(e){
-		query.today_only = ui.today_only.attr('checked') ? 1: 0;
+		query.today_only = ui.today_only.attr('checked')?1:0;
 		_update();
 	});
 	jQuery('a.overlay').on('click',function(e){
@@ -606,7 +606,7 @@ jQuery(document).ready(function(e){
 				$this.parent().find('button').unbind('click.candle');
 			}
 		});
-	jQuery('input,textarea,select,option')
+	jQuery('input[type="text"],textarea,select,option')
 		.on('focusin',function(e){
 			jQuery('body').addClass('form-active');
 		})

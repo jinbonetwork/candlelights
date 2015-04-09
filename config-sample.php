@@ -44,19 +44,26 @@ $_attributes[init] = $_GET[sw_lat] ? 0 : $_attributes[init];
 foreach( $_attributes as $key => $value ){
 	define( strtoupper( $key ), urldecode( $value ) );
 }
-
-$today = mktime(0, 0, 0, date("m")  , date("d"), date("Y")); 
-$theday = mktime(0, 0, 0, 4, 16, 2014); 
-$counter = ($today - $theday) / (60 * 60 * 24);
+define( 'YMD_NOW_DATE', YMD.date(' H:i:s'));
+define( 'YMD_NOW', strtotime(YMD_NOW_DATE));
+define( 'YMD_START', strtotime(YMD.' 00:00:00'));
+define( 'YMD_END', strtotime(YMD.' 23:59:59'));
 
 define( 'TODAY_YMD', date('Y-m-d') );
-define( 'DAY_COUNTER', $counter);
+define( 'TODAY_NOW', date('Y-m-d H:i:s'));
+define( 'TODAY_NOW_TIME',strtotime(TODAY_NOW));
 define( 'TODAY_YEAR', date('Y') );
 define( 'TODAY_MONTH', date('n') );
 define( 'TODAY_DAY', date('j') );
 define( 'TODAY_WEEKDAY', date('D') );
 define( 'TODAY_FORMAT', date(get_option('date_format')) );
 
+# D-DAY counter;
+$today = mktime(0, 0, 0, date("m")  , date("d"), date("Y")); 
+$theday = mktime(0, 0, 0, 4, 16, 2014); 
+$counter = ($today - $theday) / (60 * 60 * 24);
+
+define( 'DAY_COUNTER', $counter);
 define( 'SITE_URL', get_option('home') );
 define( 'BASEURL', SITE_URL.'/' );
 

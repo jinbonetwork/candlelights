@@ -254,8 +254,6 @@ function get_events_query( $options = array() ){
 	 * Build query
 	 */
 	if( !$where ) { // default is list query;
-		define('DAY_START',strtotime(YMD.' 00:00:00'));
-		define('DAY_END',strtotime(YMD.' 23:59:59'));
 		$query_conditions = array(); 
 		$query_conditions[] = 'e.event_status="publish"';
 		//$query_conditions[] = 'e.event_parent = 0';
@@ -265,10 +263,9 @@ function get_events_query( $options = array() ){
 		if( SW_LAT || NE_LAT || SW_LNG || NE_LNG ) {
 			$query_conditions[] = '( e.latitude >= __SW_LAT__ AND e.latitude <= __NE_LAT__ AND e.longitude >= __SW_LNG__ AND e.longitude <= __NE_LNG__ )';
 		}
-		$query_conditions[] = '( e.end >= __DAY_START__ OR i.end >= __DAY_START__ )'; // events not ended
+		$query_conditions[] = '( e.end >= __YMD_START__ OR i.end >= __YMD_START__ )'; // events not ended
 		if( TODAY_ONLY || YMD < TODAY_YMD ) {
-			//$query_conditions[] = '( e.start <= __DAY_END__ OR i.start <= __DAY_END__ )'; // events must be available on given day
-			$query_conditions[] = '( i.start <= __DAY_END__ )'; // events must be available on given day
+			$query_conditions[] = '( i.start <= __YMD_END__ )'; // events must be available
 		}
 		$where = implode( ' AND ', $query_conditions );
 	}

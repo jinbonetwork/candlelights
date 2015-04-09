@@ -66,11 +66,27 @@ if( $events ){
 	}
 } 
 if( current_user_can( DEVEL_CAPABILITY ) ){
-	$envVars = json_encode(print_r(get_defined_constants(),true));
+	$ymd_now = YMD_NOW_DATE.' ('.YMD_NOW.')';
+	$today_now = TODAY_NOW.' ('.TODAY_NOW_TIME.')';
+	$count = count($events);
+	$message = <<<CONSOLE_MESSAGE
+		<ul>
+			<li>YMD_NOW: <code>{$ymd_now}</code></li>
+			<li>TODAY_NOW: <code>{$today_now}</code></li>
+			<li>Query: <code>{$query_escaped}</code></li>
+			<li>Excution time:
+				<ul>
+					<li><code>{$time_elapsed}</code>/<code>{$time_elapsed2}</code>sec</li>
+					<li><code>{$time_start} ~ {$time_end} ~ {$time_end2}</code></li>
+				</ul>
+			</li>
+			<li><code>{$count}</code> entries loaded.</li>
+		</ul>
+CONSOLE_MESSAGE;
+	$message = str_replace("\n",'',$message);
 	echo <<<EOT
 	<script>
-		console.log({$envVars});
-		jQuery('#main-console').html('<div class="query"><code>{$query_escaped}</code></div><div class="time">Excution time: {$time_elapsed} / {$time_elapsed2} sec ({$time_start} ~ {$time_end} ~ {$time_end2})</div>');
+		jQuery('#main-console').html('{$message}');
 	</script>
 EOT;
 }

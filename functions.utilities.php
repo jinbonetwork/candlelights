@@ -157,16 +157,16 @@ function get_event_posts( $ids ){
 }
 function get_event_category($entry){
 	global $wpdb,$table_prefix;
-	$ttid = $entry->term_taxonomy_id;
-	if($ttid){
+	$terms = get_the_terms($entry->ID,'events_categories');
+	if(!empty($terms)){
+		$category = $terms[0];
 		$db = $table_prefix.'ai1ec_event_category_meta';
-		$general = get_term_by( 'term_taxonomy_id', $ttid, 'events_categories' );
-		$meta = $wpdb->get_row("SELECT * FROM {$db} WHERE term_id='{$general->term_id}'");
-		$category = array_merge((array)$general,(array)$meta);
+		$categoryMeta = $wpdb->get_row("SELECT * FROM {$db} WHERE term_id='{$category->term_id}'");
+		$categoryExtended = array_merge((array)$category,(array)$categoryMeta);
 	}else{
-		$category = array();
+		$categoryExtended = array();
 	}
-	return (object)$category;
+	return (object)$categoryExtended;
 }
 function determine_icon($name){
 	$icon = (object)array('basename' => 'c'.md5($name),);

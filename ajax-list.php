@@ -66,13 +66,11 @@ if( $events ){
 	}
 } 
 if( current_user_can( DEVEL_CAPABILITY ) ){
-	ob_start();
-	print_r(get_defined_constants(true));
-	$envVars = ob_get_contents();
-	ob_end_clean();
+	$envVars = json_encode(print_r(get_defined_constants(),true));
 	echo <<<EOT
 	<script>
-		jQuery('#main-console').html('<div class="env"><code>{$envVars}</code></div><div class="query"><code>{$query_escaped}</code></div><div class="time">Excution time: {$time_elapsed} / {$time_elapsed2} sec ({$time_start} ~ {$time_end} ~ {$time_end2})</div>');
+		console.log({$envVars});
+		jQuery('#main-console').html('<div class="query"><code>{$query_escaped}</code></div><div class="time">Excution time: {$time_elapsed} / {$time_elapsed2} sec ({$time_start} ~ {$time_end} ~ {$time_end2})</div>');
 	</script>
 EOT;
 }

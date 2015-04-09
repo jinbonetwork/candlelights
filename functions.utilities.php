@@ -157,11 +157,11 @@ function get_event_posts( $ids ){
 }
 function get_event_category($entry){
 	global $wpdb,$table_prefix;
-	$term_id = $entry->term_taxonomy_id;
-	if($term_id){
+	$ttid = $entry->term_taxonomy_id;
+	if($ttid){
 		$db = $table_prefix.'ai1ec_event_category_meta';
-		$general = get_term( $term_id, 'events_categories' );
-		$meta = $wpdb->get_row("SELECT * FROM {$db} WHERE term_id='{$term_id}'");
+		$general = get_term_by( 'term_taxonomy_id', $ttid, 'events_categories' );
+		$meta = $wpdb->get_row("SELECT * FROM {$db} WHERE term_id='{$general->term_id}'");
 		$category = array_merge((array)$general,(array)$meta);
 	}else{
 		$category = array();
@@ -170,7 +170,7 @@ function get_event_category($entry){
 }
 function determine_icon($name){
 	$basenamePattern = array(
-		'-' => '_',
+//		'-' => '_',
 	);
 	$icon = (object)array('basename' => str_replace(array_keys($basenamePattern),array_values($basenamePattern),$name),);
 	$icon->basename = $icon->basename?$icon->basename:ICON_SLUG_DEFAULT;

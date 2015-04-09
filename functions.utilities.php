@@ -253,8 +253,6 @@ function get_events_query( $options = array() ){
 	 * Build query
 	 */
 	if( !$where ) { // default is list query;
-		define( 'DAY_START', strtotime( YMD . ' 00:00:00' ) );
-		define( 'DAY_END', strtotime( YMD . ' 23:59:59' ) );
 		$query_conditions = array(); 
 		$query_conditions[] = 'e.event_status="publish"';
 		//$query_conditions[] = 'e.event_parent = 0';
@@ -271,7 +269,11 @@ function get_events_query( $options = array() ){
 		}
 		$where = implode( ' AND ', $query_conditions );
 	}
-	$query_structure = $select . ' ' . $where . ' ' . $order . ( $limit ? ' LIMIT ' . ( $offset ? $offset . ',' : '' ) . $limit : '' );
+
+	$query_structure = "{$select} {$where} {$order}";
+	if($limit){
+		$query_structure .= ' LIMIT '.($offset?$offset.',':'').$limit;
+	}
 
 	/*
 	 * Complete query

@@ -73,7 +73,7 @@ EOT;
 		<div class="event-annotation block block-wide">
 			<h2 class="title"><?php
 				printf(
-					__('<span class="today-is">Today is</span> <span class="year">%s</span> <span class="month">%s</span> <span class="day">%s</span>; <span class="counter">%s</span> days have passed since the Sewol Ferry Tragedy.','candlelights'),
+					__('<span class="today-is">Today is</span> <span class="date"><span class="year">%s</span> <span class="month">%s</span> <span class="day">%s</span><span class="split">;</span></span> <span class="today-description"><span class="counter">%s days</span> <span class="pre-phrase">have passed</span> <span class="post-phrase">since the Sewol Ferry Tragedy.</span></span>','candlelights'),
 					TODAY_YEAR,
 					TODAY_MONTH,
 					TODAY_DAY,

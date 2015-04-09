@@ -363,8 +363,8 @@ msgstr "초"
 msgid "Weekday"
 msgstr "요일"
 
-msgid "<span class=\"today-is\">Today is</span> <span class=\"year\">%s</span> <span class=\"month\">%s</span> <span class=\"day\">%s</span>; <span class=\"counter\">%s</span> days have passed since the Sewol Ferry Tragedy."
-msgstr "<span class=\"today-is\">오늘은</span> <span class=\"year\">%s년</span> <span class=\"month\">%s월</span> <span class=\"day\">%s일</span>, 세월호가 침몰한지 <span class=\"counter\">%s일째</span> <span class=\"end-of-paragraph\">되는 날입니다.</span>"
+msgid "<span class=\"today-is\">Today is</span> <span class=\"date\"><span class=\"year\">%s</span> <span class=\"month\">%s</span> <span class=\"day\">%s</span><span class=\"split\">;</span></span> <span class=\"today-description\"><span class=\"counter\">%s days</span> <span class=\"pre-phrase\">have passed</span> <span class=\"post-phrase\">since the Sewol Ferry Tragedy.</span></span>"
+msgstr "<span class=\"today-is\">오늘은</span> <span class=\"date\"><span class=\"year\">%s년</span> <span class=\"month\">%s월</span> <span class=\"day\">%s일</span><span class=\"split\">,</span></span> <span class=\"today-description\"><span class=\"pre-phrase\">세월호가 침몰한 지</span> <span class=\"counter\">%s일째</span> <span class=\"post-phrase\">되는 날입니다.</span></span>"
 
 msgid "To join the petition, please visit %s."
 msgstr "세월호 인양촉구 청원하기: %s"

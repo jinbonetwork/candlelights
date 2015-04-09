@@ -70,7 +70,7 @@ if( current_user_can( DEVEL_CAPABILITY ) ){
 	$today_now = TODAY_NOW.' ('.TODAY_NOW_TIME.')';
 	$count = count($events);
 	$message = <<<CONSOLE_MESSAGE
-		<ul>
+		<ul style="font-size: 11px;">
 			<li>YMD_NOW: <code>{$ymd_now}</code></li>
 			<li>TODAY_NOW: <code>{$today_now}</code></li>
 			<li>Query: <code>{$query_escaped}</code></li>

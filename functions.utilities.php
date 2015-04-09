@@ -103,7 +103,7 @@ function filter_recurrence_rules( $event ){
 			$event->event_rules[$key] = $value;
 		}
 		$event->event_date_start = filter_date( get_option( 'date_format' ), $event->start );
-		$event->event_date_end = $event->event_rules[until] ? filter_date( get_option( 'date_format' ), strtotime( str_replace( array( 'T', 'Z' ), ' ', $event->event_rules[until] ) ) ) : '';
+		$event->event_date_end = !$event->instant_event&&$event->event_rules[until] ? filter_date( get_option( 'date_format' ), strtotime( str_replace( array( 'T', 'Z' ), ' ', $event->event_rules[until] ) ) ) : '';
 		$event->event_date = sprintf( __( '%s ~ %s', 'candlelights' ), $event->event_date_start, $event->event_date_end );
 
 		if( $event->event_rules[byday] ) {
@@ -132,7 +132,7 @@ function filter_recurrence_rules( $event ){
 		$event->event_rule = '';
 	}
 	$event->event_time_start = filter_date( get_option( 'time_format' ), $event->start );
-	$event->event_time_end = filter_date( get_option( 'time_format' ), $event->end );
+	$event->event_time_end = !$event->instant_event?filter_date( get_option( 'time_format' ), $event->end ):'';
 	if( $event->allday ) {
 		$event->event_time = __( 'All day', 'candlelights' );
 	} else {
@@ -158,11 +158,15 @@ function get_event_posts( $ids ){
 function get_event_category($entry){
 	global $wpdb,$table_prefix;
 	$term_id = $entry->term_taxonomy_id;
-	$db = $table_prefix.'ai1ec_event_category_meta';
-	$general = get_term( $term_id, 'events_categories' );
-	$meta = $wpdb->get_row("SELECT * FROM {$db} WHERE term_id='{$term_id}'");
-	$category = (object)array_merge((array)$general,(array)$meta);
-	return $category;
+	if($term_id){
+		$db = $table_prefix.'ai1ec_event_category_meta';
+		$general = get_term( $term_id, 'events_categories' );
+		$meta = $wpdb->get_row("SELECT * FROM {$db} WHERE term_id='{$term_id}'");
+		$category = array_merge((array)$general,(array)$meta);
+	}else{
+		$category = array();
+	}
+	return (object)$category;
 }
 function determine_icon($name){
 	$basenamePattern = array(

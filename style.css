@@ -1438,14 +1438,14 @@ ul#menu-notices li a:hover {
 }
 .clndr .days-container .days .day.today span,
 .clndr .legends .today .mark {
-	border-color: #6600AA !important;
+	border-color: #F8CEB6 !important;
 	background-color: transparent;
-	color: #6600AA !important;
+	color: #F8CEB6 !important;
 }
 .clndr .days-container .days .day.event span,
 .clndr .legends .event .mark {
-	border-color: #F9F8C0;
-	background-color: #F9F8C0;
+	border-color: #F8CEB6;
+	background-color: #F8CEB6;
 	color: #2EABB3;
 }
 .clndr .days-container .days .day.event.today span {

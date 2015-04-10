@@ -299,17 +299,17 @@ ul.menu li.manual-link a {
 	clear: both;
 }
 #navigation {
-	margin-right: 150px;
 }
 @media all and ( max-width: __FANCYBOX_WIDTH__px ) {
-	#navigation {
+	#navigation ul#menu-user {
 		display: none;
 	}
 }
-#navigation ul#menu-user li.contribute a {
-	position: absolute;
-	top: 0;
-	right: 0;
+#navigation ul#menu-user {
+	position: relative;
+}
+#navigation ul#menu-user li.contribute {
+	float: right;
 	width: 150px;
 	background-color: #A7DBD9;
 	color: #FFFFFF;
@@ -521,12 +521,15 @@ body.mobile #console {
 }
 #console .console-item {
 	box-sizing: border-box;
+	position: absolute;
+	top: 0;
 	float: left;
 	height: 30px;
 	line-height: 30px;
 	margin: 10px 0 0 10px;
 }
 #console .console-item > * {
+	position: relative;
 	height: inherit;
 	line-height: inherit;
 	margin: 0;
@@ -547,7 +550,7 @@ body.mobile #console {
 	text-indent: 1em !important;
 }
 #category-selector {
-	position: relative;
+	left: 0;
 	width: 130px;
 }
 #category-selector.click {
@@ -555,9 +558,12 @@ body.mobile #console {
 	overflow: visible;
 }
 #category-selector select {
+	display: none;
 	position: absolute;
 	top: -10000px;
 	left: -10000px;
+	width: 0;
+	height: 0;
 }
 #category-selector label {
 	position: relative;
@@ -594,11 +600,17 @@ body.mobile #console {
 #category-selector ul li:hover {
 	background-color: #E4F4F4;
 }
+#ymd-picker {
+	left: 140px;
+}
 #ymd-picker input {
 	width: 100px;
 }
 .datepicker {
 	z-index: 99999999999999 !important;
+}
+#today-only-switch {
+	left: 250px;
 }
 #today-only-switch input,
 #today-only-switch label {
@@ -612,7 +624,7 @@ body.mobile #console {
 	font-size: 12px;
 }
 #share-this-site {
-	float: right !important;
+	right: 0;
 	margin: 10px 0 0 0;
 	padding: 0 10px 0 0;
 }
@@ -713,6 +725,20 @@ body.mobile #console+div {
 }
 #main-console {
 	border-bottom: 1px solid #DDDDDD;
+}
+
+/*
+ * Menu: Notice
+ */
+ul#menu-notices {
+}
+ul#menu-notices li {
+}
+ul#menu-notices li a {
+	color: #666666;
+}
+ul#menu-notices li a:hover {
+	color: #000000;
 }
 
 /*

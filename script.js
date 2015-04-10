@@ -92,6 +92,21 @@ var marker = {};
 var tooltip = [];
 var master = true;
 var thread = 0;
+var disableRefreshInListMode = __DISABLE_REFRESH_IN_LIST_MODE__;
+
+var fancyboxOptions = {
+	width: __FANCYBOX_WIDTH__,
+	height: __FANCYBOX_HEIGHT__,
+	autoSize: false,
+	autoResize: true,
+	autoCenter: true,
+	fitToView: true,
+	margin: 0,
+	padding: 0,
+	closeBtn: true,
+	wrapCSS: 'event-detail-box',
+};
+
 
 jQuery(document).ready(function(e){
 	var $window = jQuery(window);
@@ -324,7 +339,7 @@ jQuery(document).ready(function(e){
 	function _update(){
 		_check();
 		master = true;
-		if($body.hasClass('mode-list')||$body.hasClass('has-fancybox')||$body.hasClass('form-active')) {
+		if((disableRefreshInListMode&&$body.hasClass('mode-list'))||$body.hasClass('has-fancybox')||$body.hasClass('form-active')) {
 			master = false;
 		}
 		if( query.auto_search && master == true ) {
@@ -339,27 +354,19 @@ jQuery(document).ready(function(e){
 			box.removeClass('has-fancybox');
 		}
 	}
-	function _open_overlay( _type, _detail, _address ){
+	function _open_overlay( _type, _detail, _address, extraOptions ){
 		_type = _type || 'iframe';
 		_address = _address || false;
+		extraOptions = extraOptions || {};
 
 		if( query.popup_lat ) {
 			map.setLevel( query.popup_level );
 			map.setCenter( new daum.maps.LatLng( query.popup_lat, query.popup_lng ) );
 		}
-		jQuery.fancybox.open({
+
+		var options = jQuery.extend({},fancyboxOptions,{
 			href: _detail,
 			type: _type,
-			width: __FANCYBOX_WIDTH__,
-			height: __FANCYBOX_HEIGHT__,
-			autoSize: false,
-			autoResize: true,
-			autoCenter: true,
-			fitToView: true,
-			margin: 0,
-			padding: 0,
-			closeBtn: true,
-			wrapCSS: 'event-detail-box',
 			afterLoad: function(){
 				_check_fancybox( true );
 				if( _address ) {
@@ -377,7 +384,9 @@ jQuery(document).ready(function(e){
 					_load();
 				}
 			}
-		});
+		},extraOptions);
+
+		jQuery.fancybox.open(options);
 	}
 
 	query._attributes = function(){
@@ -523,10 +532,46 @@ jQuery(document).ready(function(e){
 		_update();
 	});
 	jQuery('a.overlay').on('click',function(e){
-		e.preventDefault();
-		var $this = jQuery(this);
-		var _type = $this.hasClass('ajax') ? 'ajax' : 'iframe';
-		_open_overlay( _type, $this.attr('href') );
+		if(jQuery(this).attr('target')!='_blank'){
+			e.preventDefault();
+			var $this = jQuery(this);
+			var $container = $this.closest('li');
+			var _type = $this.hasClass('ajax')?'ajax':'iframe';
+			var extraOptions = {};
+
+			if($container.hasClass('image')){
+				extraOptions.type = 'image';
+			}
+
+			if($container.hasClass('html')){
+				extraOptions.type = 'html';
+			}
+
+			if($container.hasClass('iframe')){
+				extraOptions.type = 'iframe';
+			}
+
+			if($container.hasClass('fullscreen')){
+				extraOptions.width = 9999;
+				extraOptions.height = 9999;
+				extraOptions.autoSize = true;
+				extraOptions.autoResize = true;
+				extraOptions.fitToView = true;
+			}
+			
+			if($container.hasClass('autosize')){
+				extraOptions.width = 'auto';
+				extraOptions.height = 'auto';
+				extraOptions.autoSize = true;
+				extraOptions.autoResize = true;
+				extraOptions.fitToView = true;
+			}
+
+			options = jQuery.extend({},fancyboxOptions,extraOptions);
+			console.log(options);
+
+			_open_overlay(_type,$this.attr('href'),null,options);
+		}
 	});
 	jQuery('a.mode-toggler').on('click',function(e){
 		_mode();

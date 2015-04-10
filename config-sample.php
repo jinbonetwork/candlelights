@@ -82,6 +82,7 @@ define( 'SEARCH_LEVEL', 5 );
 define( 'POPUP_LEVEL', 5 );
 define( 'ANIMATION_MODE_DURATION', 0.2 ); // in seconds
 define( 'ANIMATION_SCROLL_DURATION', 0 ); // in seconds
+define( 'DISABLE_REFRESH_IN_LIST_MODE', 0 ); // 1/0, not true/false.
 
 define( 'ICON_SLUG_DEFAULT', 'default' );
 define( 'ICON_PREFIX', 'pin_' );

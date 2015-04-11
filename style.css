@@ -286,9 +286,7 @@ ul.menu li.manual-link a {
 	background: transparent url('images/title.svg') scroll no-repeat center center;
 }
 #banner .site-description {
-	height: 50px;
-	line-height: 50px;
-	font-size: 16px;
+	display: none;
 }
 #navigation {
 	float: right;
@@ -312,8 +310,10 @@ ul.menu li.manual-link a {
 	float: right;
 	width: 150px;
 	background-color: #A7DBD9;
-	color: #FFFFFF;
 	font-weight: bold;
+}
+#navigation ul#menu-user li.contribute a {
+	color: #FFFFFF;
 }
 #navigation ul#menu-user li.contribute a:hover {
 	background-color: #77B6B3;

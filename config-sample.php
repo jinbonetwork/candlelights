@@ -44,10 +44,10 @@ $_attributes[init] = $_GET[sw_lat] ? 0 : $_attributes[init];
 foreach( $_attributes as $key => $value ){
 	define( strtoupper( $key ), urldecode( $value ) );
 }
-define( 'YMD_NOW_DATE', YMD.date(' H:i:s'));
-define( 'YMD_NOW', strtotime(YMD_NOW_DATE));
-define( 'YMD_START', strtotime(YMD.' 00:00:00'));
-define( 'YMD_END', strtotime(YMD.' 23:59:59'));
+define( 'YMD_NOW', YMD.date(' H:i:s'));
+define( 'YMD_NOW_TIME', strtotime(YMD_NOW));
+define( 'YMD_START_TIME', strtotime(YMD.' 00:00:00'));
+define( 'YMD_END_TIME', strtotime(YMD.' 23:59:59'));
 
 define( 'TODAY_YMD', date('Y-m-d') );
 define( 'TODAY_NOW', date('Y-m-d H:i:s'));

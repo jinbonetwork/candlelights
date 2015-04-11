@@ -66,7 +66,7 @@ if( $events ){
 	}
 } 
 if( current_user_can( DEVEL_CAPABILITY ) ){
-	$ymd_now = YMD_NOW_DATE.' ('.YMD_NOW.')';
+	$ymd_now = YMD_NOW.' ('.YMD_NOW_TIME.')';
 	$today_now = TODAY_NOW.' ('.TODAY_NOW_TIME.')';
 	$count = count($events);
 	$message = <<<CONSOLE_MESSAGE

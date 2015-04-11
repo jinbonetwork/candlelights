@@ -93,6 +93,7 @@ function filter_date( $format, $time = '' ){
 }
 
 function filter_recurrence_rules( $event ){
+
 	if( $event->recurrence_rules ) {
 		$event->event_rules = array();
 		$rules = explode( ';', $event->recurrence_rules );
@@ -125,11 +126,17 @@ function filter_recurrence_rules( $event ){
 		$event->event_rule .= ( $event->event_rules[byday] ? ' ' . __( $event->event_byday, 'candlelights' ) : '' );
 		$event->event_rules = array_filter( $event->event_rules, 'trim' );
 	} else {
-		$current_year = date('Y', time());
-		$event_year = date('Y', $event->start);
-		$format = ( strpos( $current_year, $event_year ) !== false && defined('ALT_DATE_FORMAT') ) ? ALT_DATE_FORMAT : get_option( 'date_format' );
-		$event->event_date = filter_date( $format, $event->start );
-		$event->event_rule = '';
+		if(date('Ymd',$event->start)==date('Ymd',$event->end)||!$event->end){
+			$current_year = date('Y', time());
+			$event_year = date('Y', $event->start);
+			$format = ( strpos( $current_year, $event_year ) !== false && defined('ALT_DATE_FORMAT') ) ? ALT_DATE_FORMAT : get_option( 'date_format' );
+			$event->event_date = filter_date( $format, $event->start );
+			$event->event_rule = '';
+		}else{
+			$event->event_date_start = filter_date( get_option( 'date_format' ), $event->start );
+			$event->event_date_end = filter_date( get_option( 'date_format' ), $event->end );
+			$event->event_date = sprintf( __( '%s ~ %s', 'candlelights' ), $event->event_date_start, $event->event_date_end );
+		}
 	}
 	$event->event_time_start = filter_date( get_option( 'time_format' ), $event->start );
 	$event->event_time_end = !$event->instant_event?filter_date( get_option( 'time_format' ), $event->end ):'';
@@ -264,9 +271,9 @@ function get_events_query( $options = array() ){
 		if( SW_LAT || NE_LAT || SW_LNG || NE_LNG ) {
 			$query_conditions[] = '( e.latitude >= __SW_LAT__ AND e.latitude <= __NE_LAT__ AND e.longitude >= __SW_LNG__ AND e.longitude <= __NE_LNG__ )';
 		}
-		$query_conditions[] = '( e.end >= __YMD_START__ OR i.end >= __YMD_START__ )'; // events not ended
+		$query_conditions[] = '( e.end >= __YMD_START_TIME__ OR i.end >= __YMD_START_TIME__ )'; // events not ended
 		if( TODAY_ONLY || YMD < TODAY_YMD ) {
-			$query_conditions[] = '( i.start <= __YMD_END__ )'; // events must be available
+			$query_conditions[] = '( i.start <= __YMD_END_TIME__ )'; // events must be available
 		}
 		$where = implode( ' AND ', $query_conditions );
 	}

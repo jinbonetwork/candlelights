@@ -859,7 +859,7 @@ ul#menu-notices li a:hover {
 	float: left;
 	width: 150px;
 	padding-bottom: 15px;
-	padding-right: 20px;
+	padding-right: 10px;
 	border-right: 2px dotted #BCBEC0;
 }
 @media all and ( max-width: __MOBILE_WIDTH_POINT__px ){
@@ -884,13 +884,17 @@ ul#menu-notices li a:hover {
 	width: auto;
 	min-height: 1.8em;
 	line-height: 1.6em;
-	text-align: center;
 	margin: 0;
 	padding: 0 1em;
 	background-color: #63CFCA;
 	color: #FFFFFF;
 	border-radius: 0 10px 10px 0;
 	font-size: 12px;
+}
+.event-date > *,
+.event-time > * {
+	display: inline-block;
+	vertical-align: middle;
 }
 .event .event-header .event-meta .event-time {
 	margin-top: 0.5em;
@@ -901,7 +905,6 @@ ul#menu-notices li a:hover {
 	font-weight: bold;
 }
 .event .event-header .event-meta .event-time .to {
-	display: block;
 }
 .event .event-category {
 	margin-left: 190px;

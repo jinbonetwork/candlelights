@@ -9,7 +9,7 @@ if( is_singular() ) {
 	define( 'ADDRESS_CHANGABLE', 0 );
 
 	define( 'META_TITLE', $event->post_title );
-	define( 'META_DESCRIPTION', make_plaintext( apply_filters( 'the_content', $event->post_content ) ) );
+	define( 'META_DESCRIPTION', make_plaintext(wptexturize($event->post_content)));
 	define( 'META_URL', get_permalink( $event->ID ) );
 	define( 'META_IMAGE', get_post_thumbnail_id( $event->ID ) ? wp_get_attachment_image_src( get_post_thumbnail_id( $event->ID ), 'full' ) : '' );
 	//define( 'META_AUTHOR', get_user_meta( $event->post_author, 'display_name', true ) );

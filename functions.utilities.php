@@ -250,7 +250,7 @@ function get_event( $id ){
 function get_events_query( $options = array() ){
 	$defaults = array(
 		//'select' => 'SELECT p.*, e.*, i.*, c.* FROM wp_ai1ec_events AS e LEFT JOIN wp_ai1ec_event_instances AS i ON e.post_id = i.post_id LEFT JOIN wp_term_relationships AS c ON c.object_id = e.post_id LEFT JOIN wp_posts AS p ON p.ID = e.post_id WHERE',
-		'select' => 'SELECT e.*, i.*, c.* FROM wp_ai1ec_events AS e LEFT JOIN wp_ai1ec_event_instances AS i ON e.post_id = i.post_id LEFT JOIN wp_term_relationships AS c ON c.object_id = e.post_id WHERE',
+		'select' => 'SELECT e.*, i.id AS instance_id, i.start AS instance_start, i.end AS instance_end, c.* FROM wp_ai1ec_events AS e LEFT JOIN wp_ai1ec_event_instances AS i ON e.post_id = i.post_id LEFT JOIN wp_term_relationships AS c ON c.object_id = e.post_id WHERE',
 		'where' => '',
 		'order' => 'GROUP BY e.post_id ORDER BY e.event_priority DESC, e.start ASC',
 		'offset' => 0,

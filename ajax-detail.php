@@ -22,25 +22,27 @@ if( $family ) {
 	$instances = array();
 
 	$unit = 60*60*24;
-	$start = $entry->start - ($entry->start%$unit) + $unit;
-	$end = $entry->end - ($entry->end%$unit) + $unit;
+	foreach( $family as $member ){
+		$current = $member->ID == $entry->ID?$entry:get_event($member->ID);
+		$start = $current->start - ($current->start%$unit)+$unit;
+		$end = $current->end - ($current->end%$unit)+$unit;
+		$events[$member->ID] = $current;
 
-	if(!$entry->recurrence_rules&&$start!=$end){
-		$events[$entry->ID] = $entry;
-		for($i=$start;$i<=$end;$i=$i+$unit){
-			$idx = $entry->ID.'-'.$i;
-			$instances[$idx] = (object)array_merge((array)$entry,array(
-				'start'=>$i
-			));
-			//echo "{$idx}: {$i} => ".date('Y-m-d',$i).'<br>';
-		}
-	}else{
-		foreach( $family as $member ){
-			$events[$member->ID] = $member->ID == $entry->ID ? $entry : get_event( $member->ID );
-			$children = $wpdb->get_results( get_events_query( array( 'where' => "i.post_id = {$member->ID}", 'order' => false, 'limit' => false) ) );
-			if( $children ){
-				foreach( $children as $instance ){
-					$instances[$instance->id] = $instance;
+		if(!$current->recurrence_rules&&$start!=$end){
+			for($i=$start;$i<=$end;$i=$i+$unit){
+				$idx = $current->ID.'-'.$i;
+				$instances[$idx] = (object)array_merge((array)$entry,array(
+					'instance_id' => $idx,
+					'instance_start' => $i,
+				));
+				//echo "{$idx}: {$i} => ".date('Y-m-d',$i).'<br>';
+			}
+		}else{
+			$query = get_events_query(array('where'=>"e.post_id={$member->ID}",'order'=>false,'limit'=>false));
+			$children = $wpdb->get_results($query);
+			if(!empty($children)){
+				foreach($children as $instance){
+					$instances[$instance->instance_id] = $instance;
 				}
 			}
 		}

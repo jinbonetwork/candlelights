@@ -3,9 +3,9 @@ $_code = array();
 $_code_output = '';
 $_tooltip = array();
 $_tooltip_output = '';
-if( $instances ) {
+if(!empty($instances)) {
 	foreach( $instances as $instance ) {
-		$_date = esc_attr( filter_date( 'Y-m-d', $instance->start ) );
+		$_date = esc_attr( filter_date( 'Y-m-d', $instance->instance_start ) );
 		$_title = esc_attr( $instance->post_id == $entry->ID ? $entry->post_title : $child[$instance->post_id]->post_title );
 		$_description = esc_attr( make_plaintext( wpautop( $instance->post_id == $entry->ID ? $entry->post_content : $child[$instance->post_id]->post_content ) ) );
 		$_url = esc_attr( get_permalink( $entry->ID ) );

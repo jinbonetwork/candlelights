@@ -21,21 +21,21 @@ if( $family ) {
 	$events = array();
 	$instances = array();
 
-	$unit = 60*60*24;
 	foreach( $family as $member ){
 		$current = $member->ID == $entry->ID?$entry:get_event($member->ID);
-		$start = $current->start - ($current->start%$unit)+$unit;
-		$end = $current->end - ($current->end%$unit)+$unit;
+		$start = filter_date('Ymd',$current->start);
+		$end = filter_date('Ymd',$current->end);
 		$events[$member->ID] = $current;
 
 		if(!$current->recurrence_rules&&$start!=$end){
-			for($i=$start;$i<=$end;$i=$i+$unit){
+			for($i=$start;$i<=$end;$i++){
+				$j = preg_replace('/([0-9]{4})([0-9]{2})([0-9]{2})/','$1-$2-$3 00:00:00',$i);
 				$idx = $current->ID.'-'.$i;
-				$instances[$idx] = (object)array_merge((array)$entry,array(
+				$instances[$idx] = (object)array_merge((array)$current,array(
 					'instance_id' => $idx,
-					'instance_start' => $i,
+					'instance_start' => filter_time($j),
 				));
-				//echo "{$idx}: {$i} => ".date('Y-m-d',$i).'<br>';
+				//echo "{$idx}: {$i} => {$j}<br>";
 			}
 		}else{
 			$query = get_events_query(array('where'=>"e.post_id={$member->ID}",'order'=>false,'limit'=>false));
@@ -43,9 +43,11 @@ if( $family ) {
 			if(!empty($children)){
 				foreach($children as $instance){
 					$instances[$instance->instance_id] = $instance;
+					//echo "{$instance->instance_id}: {$instance->instance_start} => ".filter_date('Y-m-d',$instance->instance_start)."<br>";
 				}
 			}
 		}
+		//echo 'Total '.count($instances).' instances';
 	}
 }
 

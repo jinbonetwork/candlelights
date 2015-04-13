@@ -75,6 +75,15 @@ function apply_defined_pattern_to_structure( $structure, $escape = array(), $cat
 	return $result;
 }
 
+function filter_time($date){
+	setlocale( LC_ALL, WP_LANG );
+	$timezone_backup = date_default_timezone_get();
+	date_default_timezone_set( get_option( 'timezone_string' ) );
+	$time = strtotime($date);
+	date_default_timezone_set($timezone_backup);
+	return $time;
+}
+
 function filter_date( $format, $time = '' ){
 	$time = $time?$time:time();
 	$pattern = array(

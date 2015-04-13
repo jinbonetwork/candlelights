@@ -114,7 +114,7 @@ function filter_recurrence_rules( $event ){
 		}
 		$event->event_date_start = filter_date( get_option( 'date_format' ), $event->start );
 		$event->event_date_end = !$event->instant_event&&$event->event_rules[until] ? filter_date( get_option( 'date_format' ), strtotime( str_replace( array( 'T', 'Z' ), ' ', $event->event_rules[until] ) ) ) : '';
-		$event->event_date = sprintf( __( '%s ~ %s', 'candlelights' ), $event->event_date_start, $event->event_date_end );
+		$event->event_date = sprintf( __( '<span class="from">%s</span> <span class="split">~</span> <span class="to">%s</span>', 'candlelights' ), $event->event_date_start, $event->event_date_end );
 
 		if( $event->event_rules[byday] ) {
 			$event->event_byday_raw = explode( ',', $event->event_rules[byday] );
@@ -161,7 +161,7 @@ function filter_recurrence_rules( $event ){
 					break;
 				}
 			}
-			$event->event_date = sprintf( __( '%s ~ %s', 'candlelights' ), $from, $to );
+			$event->event_date = sprintf( __( '<span class="from">%s</span> <span class="split">~</span> <span class="to">%s</span>', 'candlelights' ), $from, $to );
 		}
 	}
 	$event->event_time_start = filter_date( get_option( 'time_format' ), $event->start );

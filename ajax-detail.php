@@ -22,8 +22,8 @@ if( $family ) {
 	$instances = array();
 
 	$unit = 60*60*24;
-	$start = $entry->start - ($entry->start%$unit);
-	$end = $entry->end - ($entry->end%$unit);
+	$start = $entry->start - ($entry->start%$unit) + $unit;
+	$end = $entry->end - ($entry->end%$unit) + $unit;
 
 	if(!$entry->recurrence_rules&&$start!=$end){
 		$events[$entry->ID] = $entry;

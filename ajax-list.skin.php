@@ -27,7 +27,7 @@ if( !defined( 'ABSPATH' ) ) die( 'do not access this file directly' );
 	echo "</div><!--/.event-category-->".PHP_EOL;
 ?>
 		<div class="event-title-wrap">
-			<h3 class="event-title"><i></i><span><a href="<?php echo get_permalink( $entry->ID ); ?>"><?php echo ( current_user_can( EDITOR_CAPABILITY ) ? "({$entry->event_priority})" : '' ) . $entry->post_title; ?></a></span></h3>
+			<h3 class="event-title"><i></i><span><a href="<?php echo get_permalink( $entry->ID ); ?>"><?php echo ( current_user_can( EDITOR_CAPABILITY ) ? "({$entry->event_priority},{$entry->start},".date('Y-m-d H:i:s',$entry->start).")" : '' ) . $entry->post_title; ?></a></span></h3>
 		</div>
 	</div><!--/.event-header-->
 	<!--div class="event-body">

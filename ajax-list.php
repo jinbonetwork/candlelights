@@ -32,7 +32,7 @@ if( current_user_can( DEVEL_CAPABILITY ) ){
 }
 
 if( $events ){
-	usort( $events, 'sort_events_by' );
+	//usort( $events, 'sort_events_by' );
 
 	$ids = array();
 	foreach( $events as $event ){

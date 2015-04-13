@@ -135,7 +135,7 @@ function filter_recurrence_rules( $event ){
 		$event->event_rule .= ( $event->event_rules[byday] ? ' ' . __( $event->event_byday, 'candlelights' ) : '' );
 		$event->event_rules = array_filter( $event->event_rules, 'trim' );
 	} else {
-		if(date('Ymd',$event->start)==date('Ymd',$event->end)||!$event->end){
+		if(filter_date('Ymd',$event->start)==filter_date('Ymd',$event->end)||!$event->end){
 			$current_year = date('Y', time());
 			$event_year = date('Y', $event->start);
 			$format = ( strpos( $current_year, $event_year ) !== false && defined('ALT_DATE_FORMAT') ) ? ALT_DATE_FORMAT : get_option( 'date_format' );
@@ -144,7 +144,24 @@ function filter_recurrence_rules( $event ){
 		}else{
 			$event->event_date_start = filter_date( get_option( 'date_format' ), $event->start );
 			$event->event_date_end = filter_date( get_option( 'date_format' ), $event->end );
-			$event->event_date = sprintf( __( '%s ~ %s', 'candlelights' ), $event->event_date_start, $event->event_date_end );
+			$from = $event->event_date_start;
+			$to = $event->event_date_end;
+
+			$_scope = false;
+			$_current = explode(' ',filter_date(get_option('date_format')));
+			foreach($_current as $index => $data){
+				if(preg_match('/[0-9]{4}/',$data)){
+					$_scope = $index;
+					$_from = explode(' ',$from);
+					$_to = explode(' ',$to);
+					unset($_from[$_scope]);
+					unset($_to[$_scope]);
+					$from = implode(' ',$_from);
+					$to = implode(' ',$_to);
+					break;
+				}
+			}
+			$event->event_date = sprintf( __( '%s ~ %s', 'candlelights' ), $from, $to );
 		}
 	}
 	$event->event_time_start = filter_date( get_option( 'time_format' ), $event->start );

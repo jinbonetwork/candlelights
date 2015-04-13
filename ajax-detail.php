@@ -14,18 +14,34 @@ if( $entry->event_status != 'publish' && !current_user_can( EDITOR_CAPABILITY ) 
 
 /* get family events */
 $parent = $entry->post_parent ? $entry->post_parent : $entry->ID;
-$family = $wpdb->get_results( "SELECT ID FROM {$wpdb->posts} WHERE ( ID='{$parent}' OR post_parent='{$parent}' ) AND post_type='ai1ec_event' AND post_status='publish'" );
+$family = $wpdb->get_results( "SELECT ID FROM {$wpdb->posts} WHERE ( ID='{$parent}' OR post_parent='{$parent}' ) AND post_type='ai1ec_event'" );
 
 /* get instances */
 if( $family ) {
 	$events = array();
 	$instances = array();
-	foreach( $family as $member ){
-		$events[$member->ID] = $member->ID == $entry->ID ? $entry : get_event( $member->ID );
-		$children = $wpdb->get_results( get_events_query( array( 'where' => "i.post_id = {$member->ID}", 'order' => false, 'limit' => false ) ) );
-		if( $children ){
-			foreach( $children as $instance ){
-				$instances[$instance->id] = $instance;
+
+	$unit = 60*60*24;
+	$start = $entry->start - ($entry->start%$unit);
+	$end = $entry->end - ($entry->end%$unit);
+
+	if(!$entry->recurrence_rules&&$start!=$end){
+		$events[$entry->ID] = $entry;
+		for($i=$start;$i<=$end;$i=$i+$unit){
+			$idx = $entry->ID.'-'.$i;
+			$instances[$idx] = (object)array_merge((array)$entry,array(
+				'start'=>$i
+			));
+			//echo "{$idx}: {$i} => ".date('Y-m-d',$i).'<br>';
+		}
+	}else{
+		foreach( $family as $member ){
+			$events[$member->ID] = $member->ID == $entry->ID ? $entry : get_event( $member->ID );
+			$children = $wpdb->get_results( get_events_query( array( 'where' => "i.post_id = {$member->ID}", 'order' => false, 'limit' => false) ) );
+			if( $children ){
+				foreach( $children as $instance ){
+					$instances[$instance->id] = $instance;
+				}
 			}
 		}
 	}

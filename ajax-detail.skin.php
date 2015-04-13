@@ -64,7 +64,7 @@ $share_text = $entry->post_title;
 		<div class="event-content-feature"><?php the_post_thumbnail( 'full' ); ?></div><!--/.event-content-feature-->
 		<div class="event-content block block-narrow"><?php echo $entry->post_content_filtered; ?></div><!--/.event-content-->
 <?php
-if( $entry->show_map ) {
+if(($entry->show_map||FORCE_SHOW_MAP)&&($entry->latitude&&$entry->longitude)) {
 	echo <<<EOT
 		<div id="event-map-box" class="event-map-box"><div id="event-map" class="event-map"></div></div>
 EOT;

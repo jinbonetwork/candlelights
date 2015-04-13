@@ -78,6 +78,8 @@ define( 'SITE_CATEGORY', '정치' );
 define( 'SITE_AUTHOR', get_user_meta( 1, 'display_name', true ) );
 define( 'SITE_AUTHOR_TWITTER_ACCOUNT', '' );
 
+define( 'FORCE_SHOW_MAP', true );
+
 define( 'SEARCH_LEVEL', 5 );
 define( 'POPUP_LEVEL', 5 );
 define( 'ANIMATION_MODE_DURATION', 0.2 ); // in seconds

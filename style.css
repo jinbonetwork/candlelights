@@ -536,6 +536,11 @@ body.mobile #console {
 	padding: 0;
 	border: 0;
 }
+@media all and ( max-width: 480px ){
+	#share-this-site {
+		display: none;
+	}
+}
 #category-selector,
 #ymd-picker {
 	border: 1px solid #DDDDDD;

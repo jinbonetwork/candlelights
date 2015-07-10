@@ -105,7 +105,7 @@ get_header();
 		<div class="cornerstone">
 			<span class="powered">Powered by <a href="http://jinbo.net/support/">JINBO.NET</a></span>
 			<span class="since">2014</span>
-			<span class="join"><?php printf( __('IT volunteers will be welcomed %s.','candlelights'), '<a href="http://github.com/jinbonet">' . __('here','candlelights') . '</a>' ); ?></span>
+			<span class="join"><?php printf( __('IT volunteers will be welcomed %s.','candlelights'), '<a href="http://github.com/jinbonetwork">' . __('here','candlelights') . '</a>' ); ?></span>
 		</div><!--/.site-info-->
 	</div><!--/#footer -->
 </div><!--/#frame-->

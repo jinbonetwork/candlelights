@@ -596,14 +596,23 @@ body.mobile #console {
 	border-radius: 3px;
 	border: 1px solid #999999;
 }
+
+/* 2주기 때 카테고리 2개 새로 만들어서 그것만 쓴대서 넣음 */
 #category-selector ul li {
+	display: none;
+}
+#category-selector ul li:first-child,
+#category-selector ul li:nth-child(2),
+#category-selector ul li:nth-child(3) {
+	display: block;
 	margin: 0;
 	padding: 0;
 	cursor: pointer;
-	border-radius: 15px;
 }
+
 #category-selector ul li:hover {
 	background-color: #E4F4F4;
+	border-radius: 15px;
 }
 #ymd-picker {
 	left: 140px;

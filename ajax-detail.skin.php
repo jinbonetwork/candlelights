@@ -44,7 +44,11 @@ $share_text = $entry->post_title;
 		<div class="event-title-wrap">
 			<h3 class="event-title"><i></i><span><?php echo $entry->post_title; ?></span></h3>
 		</div>
-			
+		
+		<?php if($entry->contact_url){ ?>
+		<div class="contact_url"><a href="<?php echo $entry->contact_url; ?>">홈페이지</a></div>
+		<?php } ?>
+
 		<div class="event-console">
 			<a href="javascript://" class="button to-contact"><span class="label"><?php _e( 'Contact us', 'candlelights' ); ?></span></a>
 		</div><!--/.event-console-->

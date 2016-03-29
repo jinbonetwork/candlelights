@@ -532,6 +532,7 @@ body.mobile #console {
 	position: relative;
 	height: inherit;
 	line-height: inherit;
+	font-size: 12px;
 	margin: 0;
 	padding: 0;
 	border: 0;
